@@ -16,12 +16,14 @@
 * [Tests](#tests)
 * [History](#history)
 
-Here is the list of utilities you can use.
+Here is the list of components & methods you can use.
 
-* [Collections](#collections)
-  * [keys](#keys)
-* [Utils](#utils)
-  * [objectSize](#objectsize)
+* [Core Video Component](#corevideocomponent)
+  * [DashVideo](#dashvideo)
+  * [VideoPlayerContainer](#videoplayercontainer)
+* [Video Controlls Component](#videocontrollscomponent)
+  * [DashVideo](#dashvideo)
+  * [DashVideo](#dashvideo)
 
 ## Usage
 
@@ -29,17 +31,41 @@ Here is the list of utilities you can use.
 The component is written using ES6 therefore Babel is recommended to use it. The below example is based on using [webpack](http://webpack.github.io/) and [babel-loader](https://github.com/babel/babel-loader).
 ```js
 <!-- import everything -->
-import * as Utility from 'ship-components-video';
+import * from 'ship-components-video';
 
-<!-- import specific library -->
-import {Strings, Sort, Utils, Collections} from 'ship-components-video';
-
-<!-- import specific method from a library -->
-import {capitalize, titleCase, toUnderscoreCase, generateRandomString} from 'ship-components-video'.Strings;
+<!-- import specific component -->
+import {
+  VideoPlayerContainer,
+  PlayButton,
+  VolumeButton,
+  VideoPlayerActions,
+  VideoPlayerStore,
+  VideoDispatcher
+  } from 'ship-components-video';
 ```
 
 ## Docs
-### Collections
+### Core Video Components
+#### DashVideo
+```js
+/**
+ * Dash Adaptive Video Player
+ * @required
+ * @see http://cdn.dashjs.org/latest/jsdoc/module-MediaPlayer.html
+ */
+const { DashVideo } = require('ship-components-video');
+```
+
+#### VideoPlayerContainer
+```js
+/**
+ * Video player wrapper / container
+ * @required
+ */
+const { VideoPlayerContainer } = require('ship-components-video');
+```
+
+### Video Controlls Components
 ```js
 const {Collections} = require('ship-components-video');
 ```

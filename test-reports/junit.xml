@@ -1,69 +1,397 @@
-<testsuites name="Client Tests" tests="259" failures="0" time="6.19">
-  <testsuite name="/src/components/controls/__tests__/VideoControlsButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:21" time="1.178" tests="13">
-    <testcase classname="VideoControlsButton-should render component when passed in as a children prop" name="VideoControlsButton-should render component when passed in as a children prop" time="0.028">
+<testsuites name="Client Tests" tests="259" failures="0" time="9.032">
+  <testsuite name="/src/components/controls/__tests__/VideoControlsButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:22" time="1.687" tests="13">
+    <testcase classname="VideoControlsButton-should render component when passed in as a children prop" name="VideoControlsButton-should render component when passed in as a children prop" time="0.038">
     </testcase>
-    <testcase classname="VideoControlsButton-should pass the className prop down to VideoControl component" name="VideoControlsButton-should pass the className prop down to VideoControl component" time="0.004">
+    <testcase classname="VideoControlsButton-should pass the className prop down to VideoControl component" name="VideoControlsButton-should pass the className prop down to VideoControl component" time="0.005">
     </testcase>
-    <testcase classname="VideoControlsButton-should have container className" name="VideoControlsButton-should have container className" time="0.003">
+    <testcase classname="VideoControlsButton-should have container className" name="VideoControlsButton-should have container className" time="0.005">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onClick when user clicks on VideoControl component" name="VideoControlsButton-should fires props.onClick when user clicks on VideoControl component" time="0.006">
+    <testcase classname="VideoControlsButton-should fires props.onClick when user clicks on VideoControl component" name="VideoControlsButton-should fires props.onClick when user clicks on VideoControl component" time="0.008">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onDoubleClick()" name="VideoControlsButton-should fires props.onDoubleClick()" time="0.007">
+    <testcase classname="VideoControlsButton-should fires props.onDoubleClick()" name="VideoControlsButton-should fires props.onDoubleClick()" time="0.003">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onContextMenu()" name="VideoControlsButton-should fires props.onContextMenu()" time="0.003">
+    <testcase classname="VideoControlsButton-should fires props.onContextMenu()" name="VideoControlsButton-should fires props.onContextMenu()" time="0.004">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onMouseDown()" name="VideoControlsButton-should fires props.onMouseDown()" time="0.004">
+    <testcase classname="VideoControlsButton-should fires props.onMouseDown()" name="VideoControlsButton-should fires props.onMouseDown()" time="0.005">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onMouseEnter()" name="VideoControlsButton-should fires props.onMouseEnter()" time="0.004">
+    <testcase classname="VideoControlsButton-should fires props.onMouseEnter()" name="VideoControlsButton-should fires props.onMouseEnter()" time="0.005">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onMouseLeave()" name="VideoControlsButton-should fires props.onMouseLeave()" time="0.003">
+    <testcase classname="VideoControlsButton-should fires props.onMouseLeave()" name="VideoControlsButton-should fires props.onMouseLeave()" time="0.004">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onMouseMove()" name="VideoControlsButton-should fires props.onMouseMove()" time="0.003">
+    <testcase classname="VideoControlsButton-should fires props.onMouseMove()" name="VideoControlsButton-should fires props.onMouseMove()" time="0.004">
     </testcase>
     <testcase classname="VideoControlsButton-should fires props.onMouseOut()" name="VideoControlsButton-should fires props.onMouseOut()" time="0.003">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onMouseOver()" name="VideoControlsButton-should fires props.onMouseOver()" time="0.003">
+    <testcase classname="VideoControlsButton-should fires props.onMouseOver()" name="VideoControlsButton-should fires props.onMouseOver()" time="0.005">
     </testcase>
-    <testcase classname="VideoControlsButton-should fires props.onMouseUp()" name="VideoControlsButton-should fires props.onMouseUp()" time="0.002">
+    <testcase classname="VideoControlsButton-should fires props.onMouseUp()" name="VideoControlsButton-should fires props.onMouseUp()" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="/src/components/video/__tests__/DashVideo-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:22" time="0.296" tests="17">
-    <testcase classname="DashVideo-should call Video componentDidMount method when DashVideo mounts" name="DashVideo-should call Video componentDidMount method when DashVideo mounts" time="0.011">
+  <testsuite name="/src/data/__tests__/Video-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:24" time="0.457" tests="21">
+    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.013">
+    </testcase>
+    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.008">
+    </testcase>
+    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.018">
+    </testcase>
+    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
+    </testcase>
+    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.013">
+    </testcase>
+    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.002">
+    </testcase>
+    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.004">
+    </testcase>
+    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/components/controls/__tests__/VideoControl-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:24" time="0.455" tests="15">
+    <testcase classname="VideoControl-should render VideoControlIcon and slider when passed in as a children prop" name="VideoControl-should render VideoControlIcon and slider when passed in as a children prop" time="0.021">
+    </testcase>
+    <testcase classname="VideoControl-should pass the className prop down to VideoControl component" name="VideoControl-should pass the className prop down to VideoControl component" time="0.005">
+    </testcase>
+    <testcase classname="VideoControl-should have container className" name="VideoControl-should have container className" time="0.006">
+    </testcase>
+    <testcase classname="VideoControl-should pass the className prop down to VideoControl component" name="VideoControl-should pass the className prop down to VideoControl component" time="0.006">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onClick when user clicks on VideoControl component" name="VideoControl-should fires props.onClick when user clicks on VideoControl component" time="0.005">
+    </testcase>
+    <testcase classname="VideoControl-should fires blur() when user clicks on VideoControl component" name="VideoControl-should fires blur() when user clicks on VideoControl component" time="0.007">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onDoubleClick()" name="VideoControl-should fires props.onDoubleClick()" time="0.004">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onContextMenu()" name="VideoControl-should fires props.onContextMenu()" time="0.004">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseDown()" name="VideoControl-should fires props.onMouseDown()" time="0.004">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseEnter()" name="VideoControl-should fires props.onMouseEnter()" time="0.006">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseLeave()" name="VideoControl-should fires props.onMouseLeave()" time="0.006">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseMove()" name="VideoControl-should fires props.onMouseMove()" time="0.006">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseOut()" name="VideoControl-should fires props.onMouseOut()" time="0.005">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseOver()" name="VideoControl-should fires props.onMouseOver()" time="0.004">
+    </testcase>
+    <testcase classname="VideoControl-should fires props.onMouseUp()" name="VideoControl-should fires props.onMouseUp()" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/components/controls/__tests__/ProgressBar-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:25" time="0.509" tests="10">
+    <testcase classname="ProgressBar-should call scrubToPercent method on handleMouseDown with valid percent value" name="ProgressBar-should call scrubToPercent method on handleMouseDown with valid percent value" time="0.024">
+    </testcase>
+    <testcase classname="ProgressBar-should not call scrubToPercent method on handleMouseDown when percent is undefined" name="ProgressBar-should not call scrubToPercent method on handleMouseDown when percent is undefined" time="0.007">
+    </testcase>
+    <testcase classname="ProgressBar-should update the mouseDown state on handleMouseDown" name="ProgressBar-should update the mouseDown state on handleMouseDown" time="0.008">
+    </testcase>
+    <testcase classname="ProgressBar-should call VideoPlayerActions scrubStart method on handleMouseDown" name="ProgressBar-should call VideoPlayerActions scrubStart method on handleMouseDown" time="0.004">
+    </testcase>
+    <testcase classname="ProgressBar-should call props.onMouseDown method on handleMouseDown if available" name="ProgressBar-should call props.onMouseDown method on handleMouseDown if available" time="0.008">
+    </testcase>
+    <testcase classname="ProgressBar-should update the mouseDown state on handleMouseUp" name="ProgressBar-should update the mouseDown state on handleMouseUp" time="0.008">
+    </testcase>
+    <testcase classname="ProgressBar-should call VideoPlayerActions scrubStop method on handleMouseUp" name="ProgressBar-should call VideoPlayerActions scrubStop method on handleMouseUp" time="0.004">
+    </testcase>
+    <testcase classname="ProgressBar-should call VideoPlayerActions seekByPercent method when scrubToPercent calls" name="ProgressBar-should call VideoPlayerActions seekByPercent method when scrubToPercent calls" time="0.007">
+    </testcase>
+    <testcase classname="ProgressBar-should call props.onScrub method when scrubToPercent calls if available" name="ProgressBar-should call props.onScrub method when scrubToPercent calls if available" time="0.004">
+    </testcase>
+    <testcase classname="ProgressBar-should call scrubToPercent on handleMoveScrub when percent is defined" name="ProgressBar-should call scrubToPercent on handleMoveScrub when percent is defined" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/data/__tests__/VideoPlayerStore-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:25" time="0.539" tests="32">
+    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.01">
+    </testcase>
+    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.007">
+    </testcase>
+    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.02">
+    </testcase>
+    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.002">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.004">
+    </testcase>
+    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.004">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.isPlaying in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isPlaying in the store when the &quot;update&quot; action is called" time="0.007">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.isMuted in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isMuted in the store when the &quot;update&quot; action is called" time="0.005">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.isAutoPlay in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isAutoPlay in the store when the &quot;update&quot; action is called" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.isEnded in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isEnded in the store when the &quot;update&quot; action is called" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.isLooping in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isLooping in the store when the &quot;update&quot; action is called" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.error in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.error in the store when the &quot;update&quot; action is called" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.networkState in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.networkState in the store when the &quot;update&quot; action is called" time="0.004">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.playbackRate in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.playbackRate in the store when the &quot;update&quot; action is called" time="0.004">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.readyState in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.readyState in the store when the &quot;update&quot; action is called" time="0.006">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.videoHeight in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.videoHeight in the store when the &quot;update&quot; action is called" time="0.004">
+    </testcase>
+    <testcase classname="VideoPlayerStore-should update state.videoWidth in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.videoWidth in the store when the &quot;update&quot; action is called" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/data/__tests__/VideoPlayerActions-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:26" time="0.564" tests="33">
+    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.009">
+    </testcase>
+    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.007">
+    </testcase>
+    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.007">
+    </testcase>
+    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.01">
+    </testcase>
+    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.006">
+    </testcase>
+    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.005">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call updateState" name="VideoPlayerActions-should call dispatch when you call updateState" time="0.004">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call update" name="VideoPlayerActions-should call dispatch when you call update" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call updateDashState" name="VideoPlayerActions-should call dispatch when you call updateDashState" time="0.002">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should provide an remove method from addChangeListener" name="VideoPlayerActions-should provide an remove method from addChangeListener" time="0.001">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call streamInitialized" name="VideoPlayerActions-should call dispatch when you call streamInitialized" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call reset" name="VideoPlayerActions-should call dispatch when you call reset" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call periodSwitch" name="VideoPlayerActions-should call dispatch when you call periodSwitch" time="0.002">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call dispatch when you call updateQualityIndex" name="VideoPlayerActions-should call dispatch when you call updateQualityIndex" time="0.002">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call playbackRate when resetPlaybackRate is called" name="VideoPlayerActions-should call playbackRate when resetPlaybackRate is called" time="0.002">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call playbackRate when increasePlaybackRate is called" name="VideoPlayerActions-should call playbackRate when increasePlaybackRate is called" time="0.001">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should call playbackRate when decreasePlaybackRate is called" name="VideoPlayerActions-should call playbackRate when decreasePlaybackRate is called" time="0.002">
+    </testcase>
+    <testcase classname="VideoPlayerActions-should emit when playbackRate is called" name="VideoPlayerActions-should emit when playbackRate is called" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/lib/__tests__/getBufferedSections-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:27" time="0.442" tests="22">
+    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.007">
+    </testcase>
+    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.008">
+    </testcase>
+    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
+    </testcase>
+    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.002">
+    </testcase>
+    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.003">
+    </testcase>
+    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
+    </testcase>
+    <testcase classname="getBufferedSections-test" name="getBufferedSections-test" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/components/video/__tests__/DashVideo-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:27" time="0.375" tests="17">
+    <testcase classname="DashVideo-should call Video componentDidMount method when DashVideo mounts" name="DashVideo-should call Video componentDidMount method when DashVideo mounts" time="0.009">
     </testcase>
     <testcase classname="DashVideo-should call setup method when DashVideo mounts" name="DashVideo-should call setup method when DashVideo mounts" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should create a new MediaPlayer when setup method calls" name="DashVideo-should create a new MediaPlayer when setup method calls" time="0.004">
+    <testcase classname="DashVideo-should create a new MediaPlayer when setup method calls" name="DashVideo-should create a new MediaPlayer when setup method calls" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should call the initiaize method when setup method calls" name="DashVideo-should call the initiaize method when setup method calls" time="0.003">
+    <testcase classname="DashVideo-should call the initiaize method when setup method calls" name="DashVideo-should call the initiaize method when setup method calls" time="0.004">
     </testcase>
-    <testcase classname="DashVideo-should call the setInitialBitrateFor method when setup method calls" name="DashVideo-should call the setInitialBitrateFor method when setup method calls" time="0.002">
+    <testcase classname="DashVideo-should call the setInitialBitrateFor method when setup method calls" name="DashVideo-should call the setInitialBitrateFor method when setup method calls" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should call the setFastSwitchEnabled method when setup method calls" name="DashVideo-should call the setFastSwitchEnabled method when setup method calls" time="0.002">
+    <testcase classname="DashVideo-should call the setFastSwitchEnabled method when setup method calls" name="DashVideo-should call the setFastSwitchEnabled method when setup method calls" time="0.004">
     </testcase>
     <testcase classname="DashVideo-should call the getDebug method when setup method calls" name="DashVideo-should call the getDebug method when setup method calls" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should call the clearDefaultUTCTimingSources method when setup method calls" name="DashVideo-should call the clearDefaultUTCTimingSources method when setup method calls" time="0.002">
+    <testcase classname="DashVideo-should call the clearDefaultUTCTimingSources method when setup method calls" name="DashVideo-should call the clearDefaultUTCTimingSources method when setup method calls" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should call the addUTCTimingSource method when setup method calls" name="DashVideo-should call the addUTCTimingSource method when setup method calls" time="0.002">
+    <testcase classname="DashVideo-should call the addUTCTimingSource method when setup method calls" name="DashVideo-should call the addUTCTimingSource method when setup method calls" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should create a dashPlayerCreatedAt variable when setup method calls" name="DashVideo-should create a dashPlayerCreatedAt variable when setup method calls" time="0.003">
+    <testcase classname="DashVideo-should create a dashPlayerCreatedAt variable when setup method calls" name="DashVideo-should create a dashPlayerCreatedAt variable when setup method calls" time="0.002">
     </testcase>
-    <testcase classname="DashVideo-should override the play method with native Dashjs play method" name="DashVideo-should override the play method with native Dashjs play method" time="0.002">
+    <testcase classname="DashVideo-should override the play method with native Dashjs play method" name="DashVideo-should override the play method with native Dashjs play method" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should override the pause method with native Dashjs pause method" name="DashVideo-should override the pause method with native Dashjs pause method" time="0.004">
+    <testcase classname="DashVideo-should override the pause method with native Dashjs pause method" name="DashVideo-should override the pause method with native Dashjs pause method" time="0.003">
     </testcase>
-    <testcase classname="DashVideo-should override the mute method with native Dashjs mute method" name="DashVideo-should override the mute method with native Dashjs mute method" time="0.002">
+    <testcase classname="DashVideo-should override the mute method with native Dashjs mute method" name="DashVideo-should override the mute method with native Dashjs mute method" time="0.015">
     </testcase>
-    <testcase classname="DashVideo-should override the unmute method with native Dashjs unmute method" name="DashVideo-should override the unmute method with native Dashjs unmute method" time="0.003">
+    <testcase classname="DashVideo-should override the unmute method with native Dashjs unmute method" name="DashVideo-should override the unmute method with native Dashjs unmute method" time="0.004">
     </testcase>
-    <testcase classname="DashVideo-should override the reset method with native Dashjs reset method" name="DashVideo-should override the reset method with native Dashjs reset method" time="0.002">
+    <testcase classname="DashVideo-should override the reset method with native Dashjs reset method" name="DashVideo-should override the reset method with native Dashjs reset method" time="0.003">
     </testcase>
     <testcase classname="DashVideo-should override the seek method with native Dashjs seek method" name="DashVideo-should override the seek method with native Dashjs seek method" time="0.003">
     </testcase>
     <testcase classname="DashVideo-should override the setAutoPlay method with native Dashjs setAutoPlay method" name="DashVideo-should override the setAutoPlay method with native Dashjs setAutoPlay method" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="/src/data/__tests__/VideoPlayerActions-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:22" time="0.318" tests="33">
+  <testsuite name="/src/data/__tests__/VideoPlayerTimeStore-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:27" time="0.393" tests="24">
+    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.006">
+    </testcase>
+    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.005">
+    </testcase>
+    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.009">
+    </testcase>
+    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.002">
+    </testcase>
+    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.003">
+    </testcase>
+    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.004">
+    </testcase>
+    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
+    </testcase>
+    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerTimeStore-should update state.currentTime in the store when the &quot;update&quot; action is called" name="VideoPlayerTimeStore-should update state.currentTime in the store when the &quot;update&quot; action is called" time="0.004">
+    </testcase>
+    <testcase classname="VideoPlayerTimeStore-should update state.duration in the store when the &quot;update&quot; action is called" name="VideoPlayerTimeStore-should update state.duration in the store when the &quot;update&quot; action is called" time="0.003">
+    </testcase>
+    <testcase classname="VideoPlayerTimeStore-should update state.progress in the store when the &quot;update&quot; action is called" name="VideoPlayerTimeStore-should update state.progress in the store when the &quot;update&quot; action is called" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/components/video/__tests__/Video-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:28" time="0.372" tests="21">
     <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.007">
     </testcase>
     <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.003">
@@ -72,93 +400,25 @@
     </testcase>
     <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.004">
     </testcase>
-    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.003">
+    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.005">
     </testcase>
-    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.004">
-    </testcase>
-    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.011">
-    </testcase>
-    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call updateState" name="VideoPlayerActions-should call dispatch when you call updateState" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call update" name="VideoPlayerActions-should call dispatch when you call update" time="0">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call updateDashState" name="VideoPlayerActions-should call dispatch when you call updateDashState" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should provide an remove method from addChangeListener" name="VideoPlayerActions-should provide an remove method from addChangeListener" time="0.001">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call streamInitialized" name="VideoPlayerActions-should call dispatch when you call streamInitialized" time="0.001">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call reset" name="VideoPlayerActions-should call dispatch when you call reset" time="0">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call periodSwitch" name="VideoPlayerActions-should call dispatch when you call periodSwitch" time="0.001">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call dispatch when you call updateQualityIndex" name="VideoPlayerActions-should call dispatch when you call updateQualityIndex" time="0.01">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call playbackRate when resetPlaybackRate is called" name="VideoPlayerActions-should call playbackRate when resetPlaybackRate is called" time="0">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call playbackRate when increasePlaybackRate is called" name="VideoPlayerActions-should call playbackRate when increasePlaybackRate is called" time="0">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should call playbackRate when decreasePlaybackRate is called" name="VideoPlayerActions-should call playbackRate when decreasePlaybackRate is called" time="0.001">
-    </testcase>
-    <testcase classname="VideoPlayerActions-should emit when playbackRate is called" name="VideoPlayerActions-should emit when playbackRate is called" time="0">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/data/__tests__/VideoPlayerStore-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:23" time="0.331" tests="32">
-    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.006">
-    </testcase>
-    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.004">
-    </testcase>
-    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.004">
+    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.005">
     </testcase>
     <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.003">
     </testcase>
-    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.004">
+    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.003">
     </testcase>
-    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.002">
+    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.004">
     </testcase>
     <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.006">
     </testcase>
     <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
     </testcase>
-    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.002">
+    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.004">
     </testcase>
     <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.002">
     </testcase>
-    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
+    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.003">
     </testcase>
     <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.002">
     </testcase>
@@ -168,337 +428,77 @@
     </testcase>
     <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.002">
     </testcase>
-    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.isPlaying in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isPlaying in the store when the &quot;update&quot; action is called" time="0.004">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.isMuted in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isMuted in the store when the &quot;update&quot; action is called" time="0.003">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.isAutoPlay in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isAutoPlay in the store when the &quot;update&quot; action is called" time="0.001">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.isEnded in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isEnded in the store when the &quot;update&quot; action is called" time="0.003">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.isLooping in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.isLooping in the store when the &quot;update&quot; action is called" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.error in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.error in the store when the &quot;update&quot; action is called" time="0.001">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.networkState in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.networkState in the store when the &quot;update&quot; action is called" time="0.003">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.playbackRate in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.playbackRate in the store when the &quot;update&quot; action is called" time="0.003">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.readyState in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.readyState in the store when the &quot;update&quot; action is called" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.videoHeight in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.videoHeight in the store when the &quot;update&quot; action is called" time="0.003">
-    </testcase>
-    <testcase classname="VideoPlayerStore-should update state.videoWidth in the store when the &quot;update&quot; action is called" name="VideoPlayerStore-should update state.videoWidth in the store when the &quot;update&quot; action is called" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/components/controls/__tests__/ProgressBar-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:23" time="0.334" tests="10">
-    <testcase classname="ProgressBar-should call scrubToPercent method on handleMouseDown with valid percent value" name="ProgressBar-should call scrubToPercent method on handleMouseDown with valid percent value" time="0.016">
-    </testcase>
-    <testcase classname="ProgressBar-should not call scrubToPercent method on handleMouseDown when percent is undefined" name="ProgressBar-should not call scrubToPercent method on handleMouseDown when percent is undefined" time="0.004">
-    </testcase>
-    <testcase classname="ProgressBar-should update the mouseDown state on handleMouseDown" name="ProgressBar-should update the mouseDown state on handleMouseDown" time="0.004">
-    </testcase>
-    <testcase classname="ProgressBar-should call VideoPlayerActions scrubStart method on handleMouseDown" name="ProgressBar-should call VideoPlayerActions scrubStart method on handleMouseDown" time="0.005">
-    </testcase>
-    <testcase classname="ProgressBar-should call props.onMouseDown method on handleMouseDown if available" name="ProgressBar-should call props.onMouseDown method on handleMouseDown if available" time="0.004">
-    </testcase>
-    <testcase classname="ProgressBar-should update the mouseDown state on handleMouseUp" name="ProgressBar-should update the mouseDown state on handleMouseUp" time="0.012">
-    </testcase>
-    <testcase classname="ProgressBar-should call VideoPlayerActions scrubStop method on handleMouseUp" name="ProgressBar-should call VideoPlayerActions scrubStop method on handleMouseUp" time="0.003">
-    </testcase>
-    <testcase classname="ProgressBar-should call VideoPlayerActions seekByPercent method when scrubToPercent calls" name="ProgressBar-should call VideoPlayerActions seekByPercent method when scrubToPercent calls" time="0.004">
-    </testcase>
-    <testcase classname="ProgressBar-should call props.onScrub method when scrubToPercent calls if available" name="ProgressBar-should call props.onScrub method when scrubToPercent calls if available" time="0.003">
-    </testcase>
-    <testcase classname="ProgressBar-should call scrubToPercent on handleMoveScrub when percent is defined" name="ProgressBar-should call scrubToPercent on handleMoveScrub when percent is defined" time="0.003">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/lib/__tests__/getBufferedSections-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:23" time="0.302" tests="22">
-    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.006">
-    </testcase>
-    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.011">
-    </testcase>
-    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.004">
-    </testcase>
-    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.006">
-    </testcase>
-    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.001">
-    </testcase>
     <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.003">
     </testcase>
-    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
+    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.003">
     </testcase>
-    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="getBufferedSections-test" name="getBufferedSections-test" time="0.001">
+    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="/src/data/__tests__/VideoPlayerTimeStore-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:24" time="0.279" tests="24">
-    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.005">
+  <testsuite name="/src/components/controls/__tests__/CurrentVideoTime-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:28" time="0.354" tests="4">
+    <testcase classname="CurrentVideoTime-should toggle modes when clicking on VideoControl" name="CurrentVideoTime-should toggle modes when clicking on VideoControl" time="0.014">
     </testcase>
-    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.003">
+    <testcase classname="CurrentVideoTime-should show the correct video time" name="CurrentVideoTime-should show the correct video time" time="0.005">
     </testcase>
-    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.003">
+    <testcase classname="CurrentVideoTime-should show the correct video frames" name="CurrentVideoTime-should show the correct video frames" time="0.005">
     </testcase>
-    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.004">
-    </testcase>
-    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.004">
-    </testcase>
-    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.006">
-    </testcase>
-    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0.001">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.001">
-    </testcase>
-    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.001">
-    </testcase>
-    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.001">
-    </testcase>
-    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerTimeStore-should update state.currentTime in the store when the &quot;update&quot; action is called" name="VideoPlayerTimeStore-should update state.currentTime in the store when the &quot;update&quot; action is called" time="0.003">
-    </testcase>
-    <testcase classname="VideoPlayerTimeStore-should update state.duration in the store when the &quot;update&quot; action is called" name="VideoPlayerTimeStore-should update state.duration in the store when the &quot;update&quot; action is called" time="0.002">
-    </testcase>
-    <testcase classname="VideoPlayerTimeStore-should update state.progress in the store when the &quot;update&quot; action is called" name="VideoPlayerTimeStore-should update state.progress in the store when the &quot;update&quot; action is called" time="0.002">
+    <testcase classname="CurrentVideoTime-should pass the className prop down to VideoControl component" name="CurrentVideoTime-should pass the className prop down to VideoControl component" time="0.004">
     </testcase>
   </testsuite>
-  <testsuite name="/src/components/video/__tests__/Video-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:24" time="0.278" tests="21">
-    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.005">
+  <testsuite name="/src/components/controls/__tests__/VolumeButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:29" time="0.337" tests="2">
+    <testcase classname="VolumeButton-should call toggleMute when the icon is clicked" name="VolumeButton-should call toggleMute when the icon is clicked" time="0.013">
     </testcase>
-    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.005">
-    </testcase>
-    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.011">
-    </testcase>
-    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
+    <testcase classname="VolumeButton-should call setVolume when the slider changes" name="VolumeButton-should call setVolume when the slider changes" time="0.006">
     </testcase>
   </testsuite>
-  <testsuite name="/src/components/controls/__tests__/VideoControl-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:24" time="0.365" tests="15">
-    <testcase classname="VideoControl-should render VideoControlIcon and slider when passed in as a children prop" name="VideoControl-should render VideoControlIcon and slider when passed in as a children prop" time="0.02">
+  <testsuite name="/src/components/controls/__tests__/VideoControlSlider-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:29" time="0.376" tests="4">
+    <testcase classname="VideoControlSlider-should set the dragging state to true on when handleDragStart is called" name="VideoControlSlider-should set the dragging state to true on when handleDragStart is called" time="0.013">
     </testcase>
-    <testcase classname="VideoControl-should pass the className prop down to VideoControl component" name="VideoControl-should pass the className prop down to VideoControl component" time="0.005">
+    <testcase classname="VideoControlSlider-should set the dragging state to false on when handleDragStop is called" name="VideoControlSlider-should set the dragging state to false on when handleDragStop is called" time="0.005">
     </testcase>
-    <testcase classname="VideoControl-should have container className" name="VideoControl-should have container className" time="0.003">
+    <testcase classname="VideoControlSlider-should set the hover state to true on when handleMouseEnter is called" name="VideoControlSlider-should set the hover state to true on when handleMouseEnter is called" time="0.005">
     </testcase>
-    <testcase classname="VideoControl-should pass the className prop down to VideoControl component" name="VideoControl-should pass the className prop down to VideoControl component" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onClick when user clicks on VideoControl component" name="VideoControl-should fires props.onClick when user clicks on VideoControl component" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires blur() when user clicks on VideoControl component" name="VideoControl-should fires blur() when user clicks on VideoControl component" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onDoubleClick()" name="VideoControl-should fires props.onDoubleClick()" time="0.003">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onContextMenu()" name="VideoControl-should fires props.onContextMenu()" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseDown()" name="VideoControl-should fires props.onMouseDown()" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseEnter()" name="VideoControl-should fires props.onMouseEnter()" time="0.003">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseLeave()" name="VideoControl-should fires props.onMouseLeave()" time="0.005">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseMove()" name="VideoControl-should fires props.onMouseMove()" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseOut()" name="VideoControl-should fires props.onMouseOut()" time="0.004">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseOver()" name="VideoControl-should fires props.onMouseOver()" time="0.003">
-    </testcase>
-    <testcase classname="VideoControl-should fires props.onMouseUp()" name="VideoControl-should fires props.onMouseUp()" time="0.004">
+    <testcase classname="VideoControlSlider-should set the hover state to false on when handleMouseLeave is called" name="VideoControlSlider-should set the hover state to false on when handleMouseLeave is called" time="0.005">
     </testcase>
   </testsuite>
-  <testsuite name="/src/data/__tests__/Video-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:24" time="0.397" tests="21">
-    <testcase classname="Video-should call video.play() when VideoPlayerActions.play() is called" name="Video-should call video.play() when VideoPlayerActions.play() is called" time="0.005">
+  <testsuite name="/src/components/controls/__tests__/FullscreenButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:29" time="0.393" tests="3">
+    <testcase classname="FullscreenButton-should call toggleFullscreen when the FullscreenButton is clicked" name="FullscreenButton-should call toggleFullscreen when the FullscreenButton is clicked" time="0.009">
     </testcase>
-    <testcase classname="Video-should call video.pause() when VideoPlayerActions.pause() is called" name="Video-should call video.pause() when VideoPlayerActions.pause() is called" time="0.003">
+    <testcase classname="FullscreenButton-should pass in the correct icon prop depending on video fullscreen state" name="FullscreenButton-should pass in the correct icon prop depending on video fullscreen state" time="0.006">
     </testcase>
-    <testcase classname="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" name="Video-should call video.playbackRate() when VideoPlayerActions.playbackRate() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.mute() when VideoPlayerActions.mute() is called" name="Video-should call video.mute() when VideoPlayerActions.mute() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" name="Video-should call video.unmute() when VideoPlayerActions.unmute() is called" time="0.004">
-    </testcase>
-    <testcase classname="Video-should call video.volume() when VideoPlayerActions.volume() is called" name="Video-should call video.volume() when VideoPlayerActions.volume() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" name="Video-should call video.seekByPercent() when VideoPlayerActions.seekByPercent() is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" name="Video-should call video.seekByMilliseconds() when VideoPlayerActions.seekByMilliseconds() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.seek() when VideoPlayerActions.seek() is called" name="Video-should call video.seek() when VideoPlayerActions.seek() is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should update the timeState when currentTime changes" name="Video-should update the timeState when currentTime changes" time="0.005">
-    </testcase>
-    <testcase classname="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" name="Video-should call VideoPlayerActions.update when componentWillReceiveProps is called" time="0">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByPercent is called" name="Video-should call seek when seekByPercent is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call seek when seekByMilliseconds is called" name="Video-should call seek when seekByMilliseconds is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.play when play is called" name="Video-should call video.play when play is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call video.pause when pause is called" name="Video-should call video.pause when pause is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should call play if the video is paused when togglePlay is called" name="Video-should call play if the video is paused when togglePlay is called" time="0.003">
-    </testcase>
-    <testcase classname="Video-should call pause if the video is not paused when togglePlay is called" name="Video-should call pause if the video is not paused when togglePlay is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set muted to false when muted is called" name="Video-should set muted to false when muted is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should update playbackRate when playbackRate is called" name="Video-should update playbackRate when playbackRate is called" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the loop property on the video element" name="Video-should set the loop property on the video element" time="0.002">
-    </testcase>
-    <testcase classname="Video-should set the autoPlay property on the video element" name="Video-should set the autoPlay property on the video element" time="0.002">
+    <testcase classname="FullscreenButton-should pass the className prop down to VideoControlsButton component" name="FullscreenButton-should pass the className prop down to VideoControlsButton component" time="0.004">
     </testcase>
   </testsuite>
-  <testsuite name="/src/components/controls/__tests__/CurrentVideoTime-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:25" time="0.251" tests="4">
-    <testcase classname="CurrentVideoTime-should toggle modes when clicking on VideoControl" name="CurrentVideoTime-should toggle modes when clicking on VideoControl" time="0.01">
+  <testsuite name="/src/components/controls/__tests__/MuteButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:30" time="0.358" tests="4">
+    <testcase classname="MuteButton-should call mute function when icon is clicked" name="MuteButton-should call mute function when icon is clicked" time="0.009">
     </testcase>
-    <testcase classname="CurrentVideoTime-should show the correct video time" name="CurrentVideoTime-should show the correct video time" time="0.004">
+    <testcase classname="MuteButton-should call unmute function when icon is clicked" name="MuteButton-should call unmute function when icon is clicked" time="0.005">
     </testcase>
-    <testcase classname="CurrentVideoTime-should show the correct video frames" name="CurrentVideoTime-should show the correct video frames" time="0.003">
+    <testcase classname="MuteButton-should pass in the correct icon prop depending on video volume state" name="MuteButton-should pass in the correct icon prop depending on video volume state" time="0.009">
     </testcase>
-    <testcase classname="CurrentVideoTime-should pass the className prop down to VideoControl component" name="CurrentVideoTime-should pass the className prop down to VideoControl component" time="0.01">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/components/controls/__tests__/VideoControlSlider-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:25" time="0.234" tests="4">
-    <testcase classname="VideoControlSlider-should set the dragging state to true on when handleDragStart is called" name="VideoControlSlider-should set the dragging state to true on when handleDragStart is called" time="0.009">
-    </testcase>
-    <testcase classname="VideoControlSlider-should set the dragging state to false on when handleDragStop is called" name="VideoControlSlider-should set the dragging state to false on when handleDragStop is called" time="0.004">
-    </testcase>
-    <testcase classname="VideoControlSlider-should set the hover state to true on when handleMouseEnter is called" name="VideoControlSlider-should set the hover state to true on when handleMouseEnter is called" time="0.004">
-    </testcase>
-    <testcase classname="VideoControlSlider-should set the hover state to false on when handleMouseLeave is called" name="VideoControlSlider-should set the hover state to false on when handleMouseLeave is called" time="0.003">
+    <testcase classname="MuteButton-should pass the className prop down to VideoControlsButton component" name="MuteButton-should pass the className prop down to VideoControlsButton component" time="0.005">
     </testcase>
   </testsuite>
-  <testsuite name="/src/components/controls/__tests__/VolumeButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:25" time="0.24" tests="2">
-    <testcase classname="VolumeButton-should call toggleMute when the icon is clicked" name="VolumeButton-should call toggleMute when the icon is clicked" time="0.008">
-    </testcase>
-    <testcase classname="VolumeButton-should call setVolume when the slider changes" name="VolumeButton-should call setVolume when the slider changes" time="0.004">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/components/controls/__tests__/MuteButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:26" time="0.233" tests="4">
-    <testcase classname="MuteButton-should call mute function when icon is clicked" name="MuteButton-should call mute function when icon is clicked" time="0.006">
-    </testcase>
-    <testcase classname="MuteButton-should call unmute function when icon is clicked" name="MuteButton-should call unmute function when icon is clicked" time="0.002">
-    </testcase>
-    <testcase classname="MuteButton-should pass in the correct icon prop depending on video volume state" name="MuteButton-should pass in the correct icon prop depending on video volume state" time="0.005">
-    </testcase>
-    <testcase classname="MuteButton-should pass the className prop down to VideoControlsButton component" name="MuteButton-should pass the className prop down to VideoControlsButton component" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/components/controls/__tests__/PlayButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:26" time="0.233" tests="4">
-    <testcase classname="PlayButton-should call play function when icon is clicked" name="PlayButton-should call play function when icon is clicked" time="0.005">
+  <testsuite name="/src/components/controls/__tests__/PlayButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:30" time="0.364" tests="4">
+    <testcase classname="PlayButton-should call play function when icon is clicked" name="PlayButton-should call play function when icon is clicked" time="0.008">
     </testcase>
     <testcase classname="PlayButton-should call pause function when icon is clicked" name="PlayButton-should call pause function when icon is clicked" time="0.003">
     </testcase>
-    <testcase classname="PlayButton-should pass in the correct icon prop depending on video playing state" name="PlayButton-should pass in the correct icon prop depending on video playing state" time="0.003">
+    <testcase classname="PlayButton-should pass in the correct icon prop depending on video playing state" name="PlayButton-should pass in the correct icon prop depending on video playing state" time="0.007">
     </testcase>
-    <testcase classname="PlayButton-should pass the className prop down to VideoControlsButton component" name="PlayButton-should pass the className prop down to VideoControlsButton component" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/components/controls/__tests__/FullscreenButton-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:26" time="0.234" tests="3">
-    <testcase classname="FullscreenButton-should call toggleFullscreen when the FullscreenButton is clicked" name="FullscreenButton-should call toggleFullscreen when the FullscreenButton is clicked" time="0.006">
-    </testcase>
-    <testcase classname="FullscreenButton-should pass in the correct icon prop depending on video fullscreen state" name="FullscreenButton-should pass in the correct icon prop depending on video fullscreen state" time="0.003">
-    </testcase>
-    <testcase classname="FullscreenButton-should pass the className prop down to VideoControlsButton component" name="FullscreenButton-should pass the className prop down to VideoControlsButton component" time="0.002">
+    <testcase classname="PlayButton-should pass the className prop down to VideoControlsButton component" name="PlayButton-should pass the className prop down to VideoControlsButton component" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="/src/components/controls/__tests__/PlaybackRate-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:26" time="0.231" tests="1">
-    <testcase classname="PlaybackRate-should call VideoPlayerActions.playbackRate when a change happens" name="PlaybackRate-should call VideoPlayerActions.playbackRate when a change happens" time="0.008">
+  <testsuite name="/src/components/controls/__tests__/PlaybackRate-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:30" time="0.329" tests="1">
+    <testcase classname="PlaybackRate-should call VideoPlayerActions.playbackRate when a change happens" name="PlaybackRate-should call VideoPlayerActions.playbackRate when a change happens" time="0.011">
     </testcase>
   </testsuite>
-  <testsuite name="/src/lib/__tests__/FullscreenService-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:27" time="0.156" tests="20">
-    <testcase classname="FullscreenService › getIsFullscreen-Should return a false if no browser detected" name="FullscreenService › getIsFullscreen-Should return a false if no browser detected" time="0.001">
+  <testsuite name="/src/lib/__tests__/FullscreenService-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:31" time="0.238" tests="20">
+    <testcase classname="FullscreenService › getIsFullscreen-Should return a false if no browser detected" name="FullscreenService › getIsFullscreen-Should return a false if no browser detected" time="0.002">
     </testcase>
-    <testcase classname="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode" name="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode" time="0.001">
+    <testcase classname="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode" name="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode" time="0">
     </testcase>
-    <testcase classname="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode in Chrome" name="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode in Chrome" time="0">
+    <testcase classname="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode in Chrome" name="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode in Chrome" time="0.001">
     </testcase>
     <testcase classname="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode in Firefox" name="FullscreenService › getIsFullscreen-Should return a true if browser is in fullscreen mode in Firefox" time="0">
     </testcase>
@@ -508,53 +508,53 @@
     </testcase>
     <testcase classname="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Chrome" name="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Chrome" time="0">
     </testcase>
-    <testcase classname="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Edge" name="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Edge" time="0">
+    <testcase classname="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Edge" name="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Edge" time="0.001">
     </testcase>
-    <testcase classname="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Firefox" name="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Firefox" time="0.001">
+    <testcase classname="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Firefox" name="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Firefox" time="0">
     </testcase>
     <testcase classname="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Webkit" name="FullscreenService › exitFullscreen-Should exit fullscreen mode when exitFullscreen called in Webkit" time="0">
     </testcase>
     <testcase classname="FullscreenService › enterFullscreen-Should throw an error if no browser detected" name="FullscreenService › enterFullscreen-Should throw an error if no browser detected" time="0.001">
     </testcase>
-    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Chrome" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Chrome" time="0">
+    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Chrome" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Chrome" time="0.001">
     </testcase>
-    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Edge" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Edge" time="0">
+    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Edge" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Edge" time="0.001">
     </testcase>
-    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Firefox" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Firefox" time="0.001">
+    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Firefox" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Firefox" time="0">
     </testcase>
-    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Webkit" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Webkit" time="0">
+    <testcase classname="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Webkit" name="FullscreenService › enterFullscreen-Should enter fullscreen mode when enterFullscreen called in Webkit" time="0.001">
     </testcase>
     <testcase classname="FullscreenService › toggleFullscreen-Should exit fullscreen mode" name="FullscreenService › toggleFullscreen-Should exit fullscreen mode" time="0.001">
     </testcase>
     <testcase classname="FullscreenService › toggleFullscreen-Should enter fullscreen mode" name="FullscreenService › toggleFullscreen-Should enter fullscreen mode" time="0">
     </testcase>
-    <testcase classname="FullscreenService › addEventListener-Should throw an error if callback function not passed in" name="FullscreenService › addEventListener-Should throw an error if callback function not passed in" time="0">
+    <testcase classname="FullscreenService › addEventListener-Should throw an error if callback function not passed in" name="FullscreenService › addEventListener-Should throw an error if callback function not passed in" time="0.001">
     </testcase>
-    <testcase classname="FullscreenService › addEventListener-Should add addEventListener to element for all browsers type" name="FullscreenService › addEventListener-Should add addEventListener to element for all browsers type" time="0">
+    <testcase classname="FullscreenService › addEventListener-Should add addEventListener to element for all browsers type" name="FullscreenService › addEventListener-Should add addEventListener to element for all browsers type" time="0.001">
     </testcase>
-    <testcase classname="FullscreenService › addEventListener-Should add removeEventListener to element for all browsers type" name="FullscreenService › addEventListener-Should add removeEventListener to element for all browsers type" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="/src/lib/__tests__/VideoTimeService-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:27" time="0.15" tests="4">
-    <testcase classname="TimeService-should be an object" name="TimeService-should be an object" time="0.001">
-    </testcase>
-    <testcase classname="TimeService › string2Seconds-should convert a time string to seconds" name="TimeService › string2Seconds-should convert a time string to seconds" time="0.002">
-    </testcase>
-    <testcase classname="TimeService › seconds2String-should convert seconds to a string" name="TimeService › seconds2String-should convert seconds to a string" time="0.001">
-    </testcase>
-    <testcase classname="TimeService › getStartTime-should parse the query string and return a number in milliseconds" name="TimeService › getStartTime-should parse the query string and return a number in milliseconds" time="0.001">
+    <testcase classname="FullscreenService › addEventListener-Should add removeEventListener to element for all browsers type" name="FullscreenService › addEventListener-Should add removeEventListener to element for all browsers type" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="/src/lib/__tests__/getIsPlaying-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T18:51:27" time="0.15" tests="5">
-    <testcase classname="getIsPlaying-should return false when the currentTime is 0" name="getIsPlaying-should return false when the currentTime is 0" time="0">
+  <testsuite name="/src/lib/__tests__/getIsPlaying-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:31" time="0.22" tests="5">
+    <testcase classname="getIsPlaying-should return false when the currentTime is 0" name="getIsPlaying-should return false when the currentTime is 0" time="0.001">
     </testcase>
     <testcase classname="getIsPlaying-should return false when paused is false" name="getIsPlaying-should return false when paused is false" time="0">
     </testcase>
-    <testcase classname="getIsPlaying-should return false when ended is true" name="getIsPlaying-should return false when ended is true" time="0">
+    <testcase classname="getIsPlaying-should return false when ended is true" name="getIsPlaying-should return false when ended is true" time="0.001">
     </testcase>
     <testcase classname="getIsPlaying-should return false when readyState is less than 2" name="getIsPlaying-should return false when readyState is less than 2" time="0">
     </testcase>
-    <testcase classname="getIsPlaying-should return true when the video is playing" name="getIsPlaying-should return true when the video is playing" time="0.001">
+    <testcase classname="getIsPlaying-should return true when the video is playing" name="getIsPlaying-should return true when the video is playing" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="/src/lib/__tests__/VideoTimeService-test.js" errors="0" failures="0" skipped="0" timestamp="2018-03-31T19:03:31" time="0.27" tests="4">
+    <testcase classname="TimeService-should be an object" name="TimeService-should be an object" time="0.003">
+    </testcase>
+    <testcase classname="TimeService › string2Seconds-should convert a time string to seconds" name="TimeService › string2Seconds-should convert a time string to seconds" time="0.003">
+    </testcase>
+    <testcase classname="TimeService › seconds2String-should convert seconds to a string" name="TimeService › seconds2String-should convert seconds to a string" time="0.002">
+    </testcase>
+    <testcase classname="TimeService › getStartTime-should parse the query string and return a number in milliseconds" name="TimeService › getStartTime-should parse the query string and return a number in milliseconds" time="0.002">
     </testcase>
   </testsuite>
 </testsuites>
