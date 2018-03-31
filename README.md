@@ -22,8 +22,26 @@ Here is the list of components & methods you can use.
   * [DashVideo](#dashvideo)
   * [VideoPlayerContainer](#videoplayercontainer)
 * [Video Controlls Component](#videocontrollscomponent)
-  * [DashVideo](#dashvideo)
-  * [DashVideo](#dashvideo)
+  * [MuteButton](#mutebutton)
+  * [FullscreenButton](#fullscreenbutton)
+  * [PlaybackRate](#playbackrate)
+  * [PlayButton](#playbutton)
+  * [PreviousButton](#previousbutton)
+  * [NextButton](#nextbutton)
+  * [PlayIcon](#playicon)
+  * [LoadingIcon](#loadingicon)
+  * [ProgressBar](#progressbar)
+  * [VideoPlayerControls](#videoplayercontrols)
+  * [VolumeButton](#volumebutton)
+  * [CurrentVideoTime](#currentvideotime)
+* [Data](#data)
+  * [VideoPlayerActions](#videoplayeractions)
+  * [VideoPlayerStore](#videoplayerstore)
+  * [VideoPlayerTimeStore](#videoplayertimeStore)
+  * [VideoDispatcher](#videodispatcher)
+  * [VideoPlayerConstants](#videoplayerconstants)
+* [Config](#cofig)
+  * [PlaybackRateOptions](#playbackrateoptions)
 
 ## Usage
 
@@ -46,7 +64,7 @@ import {
 
 ## Docs
 ### Core Video Components
-#### DashVideo
+#### DashVideo (Required)
 ```js
 /**
  * Dash Adaptive Video Player
@@ -54,20 +72,165 @@ import {
  * @see http://cdn.dashjs.org/latest/jsdoc/module-MediaPlayer.html
  */
 const { DashVideo } = require('ship-components-video');
+Or
+import { DashVideo } from 'ship-components-video';
 ```
 
-#### VideoPlayerContainer
+#### VideoPlayerContainer (Required)
 ```js
 /**
  * Video player wrapper / container
  * @required
  */
-const { VideoPlayerContainer } = require('ship-components-video');
+import { VideoPlayerContainer } from 'ship-components-video';
 ```
 
 ### Video Controlls Components
+#### MuteButton
 ```js
-const {Collections} = require('ship-components-video');
+/**
+ * Mute / Volume button without volume adjusting
+ * @optional
+ */
+import { MuteButton } from 'ship-components-video';
+```
+#### FullscreenButton
+```js
+/**
+ * Fullscreen button
+ * @optional
+ */
+import { FullscreenButton } from 'ship-components-video';
+```
+#### PlaybackRate
+```js
+/**
+ * Playback rate button
+ * @optional
+ */
+import { PlaybackRate } from 'ship-components-video';
+```
+#### PlayButton
+```js
+/**
+ * Play button
+ * @optional
+ */
+import { PlayButton } from 'ship-components-video';
+```
+#### PreviousButton
+```js
+/**
+ * Previous button
+ * @optional
+ */
+import { PreviousButton } from 'ship-components-video';
+```
+#### NextButton
+```js
+/**
+ * Next button
+ * @optional
+ */
+import { NextButton } from 'ship-components-video';
+```
+#### PlayIcon
+```js
+/**
+ * Play icon overlay
+ * @optional
+ */
+import { PlayIcon } from 'ship-components-video';
+```
+#### LoadingIcon
+```js
+/**
+ * LoadingIcon
+ * @optional
+ */
+import { LoadingIcon } from 'ship-components-video';
+```
+#### ProgressBar
+```js
+/**
+ * ProgressBar
+ * @optional
+ */
+import { ProgressBar } from 'ship-components-video';
+```
+#### VideoPlayerControls
+```js
+/**
+ * VideoPlayerControls
+ * @required
+ */
+import { VideoPlayerControls } from 'ship-components-video';
+```
+#### VolumeButton
+```js
+/**
+ * Volume button with ability to volume up and down
+ * @optional
+ */
+import { VolumeButton } from 'ship-components-video';
+```
+#### CurrentVideoTime
+```js
+/**
+ * Shows the video current time
+ * @optional
+ */
+import { CurrentVideoTime } from 'ship-components-video';
+```
+### Data
+#### VideoPlayerActions (Required)
+```js
+/**
+ * Actions
+ * @required
+ */
+import { VideoPlayerActions } from 'ship-components-video';
+```
+#### VideoPlayerStore (Required)
+```js
+/**
+ * player store
+ * @required
+ */
+import { VideoPlayerStore } from 'ship-components-video';
+```
+#### VideoPlayerTimeStore (Required)
+```js
+/**
+ * player time store
+ * @required
+ */
+import { VideoPlayerTimeStore } from 'ship-components-video';
+```
+#### VideoDispatcher (Required)
+```js
+/**
+ * Dispatcher
+ * @required
+ */
+import { VideoDispatcher } from 'ship-components-video';
+```
+#### VideoPlayerConstants (Required)
+```js
+/**
+ * Constants
+ * @required
+ */
+import { VideoPlayerConstants } from 'ship-components-video';
+```
+## Config
+#### PlaybackRateOptions
+```js
+/**
+ * playback rate config options
+ * @optional
+ */
+import { PlaybackRateOptions } from 'ship-components-video';
 ```
 
 
