@@ -5,13 +5,12 @@
   "main": "src/root.js",
   "scripts": {
     "start": "grunt server",
-    "lint": "./node_modules/eslint/bin/eslint.js src/**/*",
+    "lint": "./node_modules/eslint/bin/eslint.js src/**/*.js",
     "test": "npm run lint && jest",
     "test:watchAll": "npm run test -- --watchAll --coverage=false",
     "watch:test": "jest --coverage --watch --coverage=false",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v",
-    "build": "npm test && grunt clean && grunt build",
-    "travis": "npm install trevor && trevor"
+    "build": "npm test && grunt clean && grunt build"
   },
   "repository": {
     "type": "git",
@@ -43,10 +42,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
-    "babel-loader": "^7.1.1",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -56,10 +55,10 @@
     "css-loader": "^0.28.4",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-15": "^1.0.5",
-    "eslint": "^4.1.1",
-    "eslint-config-ship-components": "^1.4.2",
-    "eslint-loader": "^1.8.0",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint": "^4.19.1",
+    "eslint-config-ship-components": "^1.5.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-react": "^7.7.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "flux": "^3.1.3",
