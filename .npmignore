@@ -1,3 +1,8 @@
 examples/
 tasks/
 Gruntfile.js
+.coveralls.yml
+.eslintrc
+.travis.yml
+setupTests.js
+test-reports
