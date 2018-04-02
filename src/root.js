@@ -1,5 +1,4 @@
 // Core Video Components
-export { default as Video } from './components/video/Video';
 export { default as DashVideo } from './components/video/DashVideo';
 export { default as VideoPlayerContainer } from './components/video/VideoPlayerContainer';
 
@@ -14,9 +13,6 @@ export { default as PlayIcon } from './components/controls/PlayIcon';
 export { default as LoadingIcon } from './components/controls/LoadingIcon';
 export { default as ProgressBar } from './components/controls/ProgressBar';
 export { default as Slider } from './components/controls/Slider';
-export { default as VideoControl } from './components/controls/VideoControl';
-export { default as VideoControlIcon } from './components/controls/VideoControlIcon';
-export { default as VideoControlsButton } from './components/controls/VideoControlsButton';
 export { default as VideoControlSlider } from './components/controls/VideoControlSlider';
 export { default as VideoPlayerControls } from './components/controls/VideoPlayerControls';
 export { default as VolumeButton } from './components/controls/VolumeButton';
