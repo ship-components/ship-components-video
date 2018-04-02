@@ -19,7 +19,7 @@ module.exports = function(grunt) {
   /** **************************************************************************
    * Build
    */
-  var buildOptions = Object.assign({}, require('../../webpack.config'), {
+  var buildOptions = Object.assign({}, require('./webpack.config'), {
     // Clear default plugins so we can override through grunt
     plugins: []
   });
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
   /** **************************************************************************
    * Development Server
    */
-  const serverOptions = Object.assign({}, require('../../webpack.config'), {
+  const serverOptions = Object.assign({}, require('./webpack.config'), {
     plugins: [
       new webpack.LoaderOptionsPlugin({
         options: {
