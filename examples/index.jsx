@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 import Select from 'ship-components-select';
 import CheckBox from 'ship-components-checkbox';
