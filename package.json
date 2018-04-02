@@ -2,7 +2,7 @@
   "name": "ship-components-video",
   "version": "0.1.0",
   "description": "React video component using HTML5 video element",
-  "main": "src/index.js",
+  "main": "src/root.js",
   "scripts": {
     "start": "grunt server",
     "lint": "./node_modules/eslint/bin/eslint.js src/**/*",
