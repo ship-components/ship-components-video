@@ -6,7 +6,7 @@
   "scripts": {
     "start": "grunt server",
     "lint": "./node_modules/eslint/bin/eslint.js src/**/*.js",
-    "test": "npm run lint && jest",
+    "test": "jest",
     "test:watchAll": "npm run test -- --watchAll --coverage=false",
     "watch:test": "jest --coverage --watch --coverage=false",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v",
