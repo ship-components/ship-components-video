@@ -14,7 +14,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postCssPlugins = require('../../libs/postCssPlugins');
 
-module.exports = function(grunt) {
+module.exports = function gruntConfig(grunt) {
 
   /** **************************************************************************
    * Build
