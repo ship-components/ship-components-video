@@ -1,131 +1,6 @@
 .CurrentVideoTime--container {
 
 }
-.VolumeButton--hover {
-
-}
-
-.VolumeButton--container {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  overflow: hidden;
-}
-
-.VolumeButton--container.VolumeButton--hover {
-    width: 150px;
-  }
-
-.VolumeButton--control {
-  /* Must hardcode to fix an issue in FF */
-  height: 48px;
-}
-
-.VolumeButton--enter {
-  opacity: 0.01;
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-
-.VolumeButton--enter.VolumeButton--enterActive {
-  opacity: 1;
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
-}
-
-.VolumeButton--leave {
-  opacity: 1;
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
-}
-
-.VolumeButton--leave.VolumeButton--leaveActive {
-  opacity: 0.01;
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
-}
-.VideoPlayerControls--container {
-  height: 48px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.11);
-  z-index: 100;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.VideoPlayerControls--autoHide {
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  -webkit-transition: 0.5s ease all;
-  transition: 0.5s ease all;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.VideoPlayerControls--autoHide.VideoPlayerControls--show {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-.VideoControlSlider--container {
-  overflow: hidden;
-  width: 48px;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 0;
-}
-
-  .VideoControlSlider--container.VideoControlSlider--hover {
-    width: 150px;
-  }
-
-  .VideoControlSlider--container.VideoControlSlider--hover .VideoControlSlider--control {
-      opacity: 1;
-    }
-.VideoControlsButton--container {
-  width: 48px;
-  height: 100%;
-  outline: 0;
-  color: #fff;
-  -webkit-transition: all 300ms ease;
-  transition: all 300ms ease;
-  background-color: #424242;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 0;
-  cursor: pointer;
-  border-radius: 0px;
-}
-
-.VideoControlsButton--icon {
-  font-size: 32px;
-}
-.VideoControlIcon--icon {
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
-  line-height: 48px;
-  font-size: 32px;
-  text-align: center;
-}
 .VideoControl--container {
   min-width: 48px;
   padding: 0 16px;
@@ -191,6 +66,109 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
+.VolumeButton--hover {
+
+}
+
+.VolumeButton--container {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow: hidden;
+}
+
+.VolumeButton--container.VolumeButton--hover {
+    width: 150px;
+  }
+
+.VolumeButton--control {
+  /* Must hardcode to fix an issue in FF */
+  height: 48px;
+}
+
+.VolumeButton--enter {
+  opacity: 0.01;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.VolumeButton--enter.VolumeButton--enterActive {
+  opacity: 1;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.VolumeButton--leave {
+  opacity: 1;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.VolumeButton--leave.VolumeButton--leaveActive {
+  opacity: 0.01;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.VideoControlIcon--icon {
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 32px;
+  text-align: center;
+}
+.VideoPlayerControls--container {
+  height: 48px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.11);
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.VideoPlayerControls--autoHide {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.5s ease all;
+  transition: 0.5s ease all;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.VideoPlayerControls--autoHide.VideoPlayerControls--show {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+.VideoControlSlider--container {
+  overflow: hidden;
+  width: 48px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0;
+}
+
+  .VideoControlSlider--container.VideoControlSlider--hover {
+    width: 150px;
+  }
+
+  .VideoControlSlider--container.VideoControlSlider--hover .VideoControlSlider--control {
+      opacity: 1;
+    }
 .Slider--container {
   position: relative;
   width: 100%;
@@ -445,6 +423,28 @@
   -webkit-transition: all 200ms ease-in;
   transition: all 200ms ease-in;
 }
+.VideoControlsButton--container {
+  width: 48px;
+  height: 100%;
+  outline: 0;
+  color: #fff;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  background-color: #424242;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.VideoControlsButton--icon {
+  font-size: 32px;
+}
 .PlaybackRate--container {
   overflow: hidden;
   width: 48px;
@@ -512,4 +512,4 @@
           user-select: none;
 }
 
-/*# sourceMappingURL=App.min.css.map*/
+/*# sourceMappingURL=main.css.map*/
