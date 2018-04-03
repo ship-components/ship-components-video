@@ -7,7 +7,7 @@ import { Record } from 'immutable';
 import VideoPlayerStore from '../../data/VideoPlayerStore';
 import VideoPlayerActions from '../../data/VideoPlayerActions';
 import FullscreenService from '../../lib/FullscreenService';
-import { VideoPlayerControls } from '../controls/VideoPlayerControls';
+import VideoPlayerControls from '../controls/VideoPlayerControls';
 
 import css from './VideoPlayerContainer.css';
 
