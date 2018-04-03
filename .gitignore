@@ -6,3 +6,4 @@ coverage/
 .vscode/
 *.sql
 .dockerignore
+test-reports
