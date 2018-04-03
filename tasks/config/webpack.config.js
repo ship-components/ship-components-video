@@ -25,12 +25,15 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.(jsx?|es6)$/,
-        enforce: 'pre',
-        include: /src\/.*/,
-        use: 'eslint-loader'
-      },
+      // Disable eslint check since newest eslint + babel modules
+      // are not comptaible with node v6.10.x which is what
+      // we currently have on some of our local vm's
+      // {
+      //   test: /\.(jsx?|es6)$/,
+      //   enforce: 'pre',
+      //   include: /src\/.*/,
+      //   use: 'eslint-loader'
+      // },
       // ES6/JSX for App
       {
         test: /\.(jsx?|es6)$/,
@@ -110,7 +113,9 @@ module.exports = {
       filename: '[name].css',
       disable: false,
       allChunks: true
-    })
+    }),
+    // Makes process.env.NODE_ENV available in the code
+    new webpack.EnvironmentPlugin(['NODE_ENV'])
   ],
 
   devtool: 'source-map'
