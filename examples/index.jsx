@@ -9,13 +9,13 @@ import Select from 'ship-components-select';
 import CheckBox from 'ship-components-checkbox';
 import TextInput from 'ship-components-textinput';
 import icon from 'ship-components-icon';
-
 import css from './index.css';
 
 import {
   // Core Video Components
   DashVideo,
   VideoPlayerContainer,
+  VideoPlayerActions,
   // Video Controlls Component
   FullscreenButton,
   PlaybackRate,
@@ -44,7 +44,8 @@ export default class Examples extends Component {
       playIcon: true,
       showPrevious: false,
       showNext: false,
-      showPlaybackRate: false
+      showPlaybackRate: false,
+      enableKeyboardShortcuts: false
     };
 
     this.handleChangeAutoPlay = this.handleChange.bind(this, 'autoPlay');
@@ -56,6 +57,7 @@ export default class Examples extends Component {
     this.handleChangeShowPrevious = this.handleChange.bind(this, 'showPrevious');
     this.handleChangeShowNext = this.handleChange.bind(this, 'showNext');
     this.handleChangeShowPlaybackRate = this.handleChange.bind(this, 'showPlaybackRate');
+    this.handleChangeEnableKeyboardShortcuts = this.handleChangeEnableKeyboardShortcuts.bind(this);
     this.handleChangePlayIcon = this.handleChangePlayIcon.bind(this);
   }
 
@@ -71,6 +73,13 @@ export default class Examples extends Component {
     this.setState({
       playIcon: value === 'Yes'
     });
+  }
+
+  handleChangeEnableKeyboardShortcuts() {
+    VideoPlayerActions.updateOptions({
+      keyboardShortcuts: !this.state.enableKeyboardShortcuts
+    });
+    this.handleChange('enableKeyboardShortcuts');
   }
 
   getFrameRateOptions() {
@@ -144,6 +153,19 @@ export default class Examples extends Component {
               iconClass={icon.arrow_drop_down}
               options={['Yes', 'No']}
             />
+            <div className={css.row}>
+              <CheckBox
+                readOnly
+                selected={this.state.enableKeyboardShortcuts}
+                onChange={this.handleChangeEnableKeyboardShortcuts}
+                outlineIconClass={icon.check_box_outline_blank}
+                selectedIconClass={icon.check_box}
+              />
+              <TextInput
+                disabled
+                label={'Enable Keyboard Shortcuts'}
+              />
+            </div>
             <div className={css.row}>
               <CheckBox
                 readOnly

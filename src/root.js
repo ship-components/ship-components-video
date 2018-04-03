@@ -14,6 +14,8 @@ export { default as LoadingIcon } from './components/controls/LoadingIcon';
 export { default as ProgressBar } from './components/controls/ProgressBar';
 export { default as Slider } from './components/controls/Slider';
 export { default as VideoControlSlider } from './components/controls/VideoControlSlider';
+export { default as VideoControlsButton } from './components/controls/VideoControlsButton';
+export { default as VideoControl } from './components/controls/VideoControl';
 export { default as VideoPlayerControls } from './components/controls/VideoPlayerControls';
 export { default as VolumeButton } from './components/controls/VolumeButton';
 export { default as CurrentVideoTime } from './components/controls/CurrentVideoTime';
@@ -27,3 +29,6 @@ export { default as VideoPlayerConstants } from './data/VideoPlayerConstants';
 
 // // Config
 export { default as PlaybackRateOptions } from './config/PlaybackRateOptions';
+
+// Helper Function
+export { default as FullscreenServicess } from './lib/FullscreenService';

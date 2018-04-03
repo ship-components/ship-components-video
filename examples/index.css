@@ -41,7 +41,7 @@ code {
 }
 
 .video--wrapper {
-  height: 80%;
+  height: 85%;
   width: 60%;
   margin-left: 100px;
 
@@ -52,7 +52,7 @@ code {
   margin: 0 100px 0 40px;
   background-color: #e4f0f5;
   padding: 0 50px;
-  height: 80%;
+  height: 85%;
 }
 
 .progressBar {

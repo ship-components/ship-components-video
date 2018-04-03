@@ -1,6 +1,6 @@
 import invariant from 'invariant';
 
-export function getIsFullscreen() {
+function getIsFullscreen() {
   // Depending on user's browser type, one of these might return undefined
   const test = window.fullScreen || document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
   // in case one of the bools checks above returns undefined
@@ -8,7 +8,7 @@ export function getIsFullscreen() {
   return Boolean(test);
 }
 
-export function exitFullscreen() {
+function exitFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.msExitFullscreen) {
@@ -22,7 +22,7 @@ export function exitFullscreen() {
   }
 }
 
-export function enterFullscreen(el) {
+function enterFullscreen(el) {
   if (el.requestFullscreen) {
     el.requestFullscreen();
   } else if (el.msRequestFullscreen) {
@@ -36,7 +36,7 @@ export function enterFullscreen(el) {
   }
 }
 
-export function toggleFullscreen(el) {
+function toggleFullscreen(el) {
   const isFullscreen = getIsFullscreen();
   if (isFullscreen) {
     exitFullscreen();
@@ -45,7 +45,7 @@ export function toggleFullscreen(el) {
   }
 }
 
-export function addEventListener(el, fn) {
+function addEventListener(el, fn) {
   invariant(
     typeof fn === 'function',
     'fn is not a function'
@@ -65,3 +65,11 @@ export function addEventListener(el, fn) {
     }
   };
 }
+
+export default {
+  addEventListener,
+  toggleFullscreen,
+  enterFullscreen,
+  exitFullscreen,
+  getIsFullscreen
+};
