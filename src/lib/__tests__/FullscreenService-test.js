@@ -1,10 +1,4 @@
-import {
-  getIsFullscreen,
-  exitFullscreen,
-  enterFullscreen,
-  toggleFullscreen,
-  addEventListener
-} from '../FullscreenService';
+import FullscreenService from '../FullscreenService';
 
 function cleanUp(obj, key) {
   if (!obj.hasOwnProperty(key)) {
@@ -27,14 +21,14 @@ describe('FullscreenService', () => {
   });
   describe('getIsFullscreen', () => {
     it('Should return a false if no browser detected', () => {
-      const test = getIsFullscreen();
+      const test = FullscreenService.getIsFullscreen();
       expect(test).toEqual(false);
     });
 
     it('Should return a true if browser is in fullscreen mode', () => {
       // Modifying the global object
       global.window.fullScreen = true;
-      const test = getIsFullscreen();
+      const test = FullscreenService.getIsFullscreen();
       expect(test).toEqual(true);
       // Reseting the global object back to default
       global.window.fullScreen = false;
@@ -43,7 +37,7 @@ describe('FullscreenService', () => {
     it('Should return a true if browser is in fullscreen mode in Chrome', () => {
       // Modifying the global object
       global.document.fullScreen = true;
-      const test = getIsFullscreen();
+      const test = FullscreenService.getIsFullscreen();
       expect(test).toEqual(true);
       // Reseting the global object back to default
       delete global.document.fullScreen;
@@ -52,7 +46,7 @@ describe('FullscreenService', () => {
     it('Should return a true if browser is in fullscreen mode in Firefox', () => {
       // Modifying the global object
       global.document.mozFullScreen = true;
-      const test = getIsFullscreen();
+      const test = FullscreenService.getIsFullscreen();
       expect(test).toEqual(true);
       // Reseting the global object back to default
       delete global.document.mozFullScreen;
@@ -61,7 +55,7 @@ describe('FullscreenService', () => {
     it('Should return a true if browser is in fullscreen mode in webkit', () => {
       // Modifying the global object
       global.document.webkitIsFullScreen = true;
-      const test = getIsFullscreen();
+      const test = FullscreenService.getIsFullscreen();
       expect(test).toEqual(true);
       // Reseting the global object back to default
       delete global.document.webkitIsFullScreen;
@@ -71,7 +65,7 @@ describe('FullscreenService', () => {
   describe('exitFullscreen', () => {
     it('Should throw an error if no browser detected', () => {
       // eslint-disable-next-line max-nested-callbacks
-      expect(() => exitFullscreen()).toThrow('Unable to exit fullscreen');
+      expect(() => FullscreenService.exitFullscreen()).toThrow('Unable to exit fullscreen');
     });
 
     it('Should exit fullscreen mode when exitFullscreen called in Chrome', () => {
@@ -79,7 +73,7 @@ describe('FullscreenService', () => {
       global.document.exitFullscreen = jest.fn();
       spy = jest.spyOn(global.document, 'exitFullscreen');
       // Exit fullscreen mode
-      exitFullscreen();
+      FullscreenService.exitFullscreen();
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       delete global.document.exitFullscreen;
@@ -90,7 +84,7 @@ describe('FullscreenService', () => {
       global.document.msExitFullscreen = jest.fn();
       spy = jest.spyOn(global.document, 'msExitFullscreen');
       // Exit fullscreen mode
-      exitFullscreen();
+      FullscreenService.exitFullscreen();
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       delete global.document.msExitFullscreen;
@@ -101,18 +95,18 @@ describe('FullscreenService', () => {
       global.document.mozCancelFullScreen = jest.fn();
       spy = jest.spyOn(global.document, 'mozCancelFullScreen');
       // Exit fullscreen mode
-      exitFullscreen();
+      FullscreenService.exitFullscreen();
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       delete global.document.mozCancelFullScreen;
     });
 
-    it('Should exit fullscreen mode when exitFullscreen called in Webkit', () => {
+    it('Should exit fullscreen mode when FullscreenService. called in Webkit', () => {
       // Modifying the global object
       global.document.webkitExitFullscreen = jest.fn();
       spy = jest.spyOn(global.document, 'webkitExitFullscreen');
       // Exit fullscreen mode
-      exitFullscreen();
+      FullscreenService.exitFullscreen();
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       delete global.document.webkitExitFullscreen;
@@ -122,14 +116,14 @@ describe('FullscreenService', () => {
   describe('enterFullscreen', () => {
     it('Should throw an error if no browser detected', () => {
       // eslint-disable-next-line max-nested-callbacks
-      expect(() => enterFullscreen(documentObjectCopy)).toThrow('Unable to enter fullscreen');
+      expect(() => FullscreenService.enterFullscreen(documentObjectCopy)).toThrow('Unable to enter fullscreen');
     });
 
     it('Should enter fullscreen mode when enterFullscreen called in Chrome', () => {
       documentObjectCopy.requestFullscreen = jest.fn();
       spy = jest.spyOn(documentObjectCopy, 'requestFullscreen');
       // Enter fullscreen mode
-      enterFullscreen(documentObjectCopy);
+      FullscreenService.enterFullscreen(documentObjectCopy);
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       cleanUp(documentObjectCopy, 'requestFullscreen');
@@ -139,7 +133,7 @@ describe('FullscreenService', () => {
       documentObjectCopy.msRequestFullscreen = jest.fn();
       spy = jest.spyOn(documentObjectCopy, 'msRequestFullscreen');
       // Enter fullscreen mode
-      enterFullscreen(documentObjectCopy);
+      FullscreenService.enterFullscreen(documentObjectCopy);
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       cleanUp(documentObjectCopy, 'msRequestFullscreen');
@@ -149,7 +143,7 @@ describe('FullscreenService', () => {
       documentObjectCopy.mozRequestFullScreen = jest.fn();
       spy = jest.spyOn(documentObjectCopy, 'mozRequestFullScreen');
       // Enter fullscreen mode
-      enterFullscreen(documentObjectCopy);
+      FullscreenService.enterFullscreen(documentObjectCopy);
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       cleanUp(documentObjectCopy, 'mozRequestFullScreen');
@@ -159,7 +153,7 @@ describe('FullscreenService', () => {
       documentObjectCopy.webkitRequestFullscreen = jest.fn();
       spy = jest.spyOn(documentObjectCopy, 'webkitRequestFullscreen');
       // Enter fullscreen mode
-      enterFullscreen(documentObjectCopy);
+      FullscreenService.enterFullscreen(documentObjectCopy);
       expect(spy).toHaveBeenCalled();
       // Reset global objects to default
       cleanUp(documentObjectCopy, 'webkitRequestFullscreen');
@@ -173,7 +167,7 @@ describe('FullscreenService', () => {
       spy = jest.spyOn(global.document, 'exitFullscreen');
 
       // Enter fullscreen mode
-      toggleFullscreen(documentObjectCopy);
+      FullscreenService.toggleFullscreen(documentObjectCopy);
       expect(spy).toHaveBeenCalled();
 
       // Reset global objects to default
@@ -187,7 +181,7 @@ describe('FullscreenService', () => {
       spy = jest.spyOn(documentObjectCopy, 'requestFullscreen');
 
       // Enter fullscreen mode
-      enterFullscreen(documentObjectCopy);
+      FullscreenService.enterFullscreen(documentObjectCopy);
       expect(spy).toHaveBeenCalled();
 
       // Reset global objects to default
@@ -211,14 +205,14 @@ describe('FullscreenService', () => {
 
     it('Should throw an error if callback function not passed in', () => {
       // eslint-disable-next-line max-nested-callbacks
-      expect(() => addEventListener(global.document)).toThrow();
+      expect(() => FullscreenService.addEventListener(global.document)).toThrow();
     });
 
     it('Should add addEventListener to element for all browsers type', () => {
       // eslint-disable-next-line max-nested-callbacks
       documentObjectCopy.addEventListener = jest.fn((eventName, cb) => cb(eventName));
       spy = jest.spyOn(documentObjectCopy, 'addEventListener');
-      addEventListener(documentObjectCopy, callbackFn);
+      FullscreenService.addEventListener(documentObjectCopy, callbackFn);
       expect(spy).toHaveBeenCalled();
       // Making sure all of the proper DOM fullscreen events are passed by
       // in to the addEventListener function
@@ -229,7 +223,7 @@ describe('FullscreenService', () => {
       // eslint-disable-next-line max-nested-callbacks
       documentObjectCopy.removeEventListener = jest.fn((eventName, cb) => cb(eventName));
       spy = jest.spyOn(documentObjectCopy, 'removeEventListener');
-      const result = addEventListener(documentObjectCopy, callbackFn);
+      const result = FullscreenService.addEventListener(documentObjectCopy, callbackFn);
       // Resets the array since it already has the event names added
       // from the addEventListener function above
       callbackFn.mockClear();

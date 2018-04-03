@@ -20,15 +20,15 @@ export { default as VideoPlayerControls } from './components/controls/VideoPlaye
 export { default as VolumeButton } from './components/controls/VolumeButton';
 export { default as CurrentVideoTime } from './components/controls/CurrentVideoTime';
 
-// // Video Actions / Store / Dispatcher / Constants
+// Video Actions / Store / Dispatcher / Constants
 export { default as VideoPlayerActions } from './data/VideoPlayerActions';
 export { default as VideoPlayerStore } from './data/VideoPlayerStore';
 export { default as VideoPlayerTimeStore } from './data/VideoPlayerTimeStore';
 export { default as VideoDispatcher } from './data/VideoDispatcher';
 export { default as VideoPlayerConstants } from './data/VideoPlayerConstants';
 
-// // Config
+// Config
 export { default as PlaybackRateOptions } from './config/PlaybackRateOptions';
 
 // Helper Function
-export { default as FullscreenServicess } from './lib/FullscreenService';
+export { default as FullscreenService } from './lib/FullscreenService';
