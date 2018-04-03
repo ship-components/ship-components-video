@@ -214,6 +214,13 @@ export class VideoPlayerStore extends ReduceStore {
   }
 
   /**
+   * Alias to get('frameRate')
+   */
+  get frameRate() {
+    return this._state.frameRate;
+  }
+
+  /**
    * Alias to get('options')
    */
   get options() {
