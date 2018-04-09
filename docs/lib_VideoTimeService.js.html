@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/VideoTimeService.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="ProgressBar_ProgressBar.html">ProgressBar</a></li><li><a href="VideoPlayerContainer_VideoPlayerContainer.html">VideoPlayerContainer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActionMap">ActionMap</a></li><li><a href="global.html#basicTime">basicTime</a></li><li><a href="global.html#BufferRecord">BufferRecord</a></li><li><a href="global.html#calculateClickPosition">calculateClickPosition</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#componentWillReceiveProps">componentWillReceiveProps</a></li><li><a href="global.html#componentWillUnmount">componentWillUnmount</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#findPos">findPos</a></li><li><a href="global.html#getBufferedSections">getBufferedSections</a></li><li><a href="global.html#getEventPosition">getEventPosition</a></li><li><a href="global.html#getIsPlaying">getIsPlaying</a></li><li><a href="global.html#handleChange">handleChange</a></li><li><a href="global.html#handleClick">handleClick</a></li><li><a href="global.html#handleDragStart">handleDragStart</a></li><li><a href="global.html#handleDragStop">handleDragStop</a></li><li><a href="global.html#handleMouseDown">handleMouseDown</a></li><li><a href="global.html#handleMouseEnter">handleMouseEnter</a></li><li><a href="global.html#handleMouseLeave">handleMouseLeave</a></li><li><a href="global.html#handleMouseMove">handleMouseMove</a></li><li><a href="global.html#handleMouseUp">handleMouseUp</a></li><li><a href="global.html#handleStreamInitialized">handleStreamInitialized</a></li><li><a href="global.html#instance">instance</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#map2QueryString">map2QueryString</a></li><li><a href="global.html#mute">mute</a></li><li><a href="global.html#pause">pause</a></li><li><a href="global.html#play">play</a></li><li><a href="global.html#playbackRate">playbackRate</a></li><li><a href="global.html#queryString2Map">queryString2Map</a></li><li><a href="global.html#removeEventListeners">removeEventListeners</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#retrieveManifest">retrieveManifest</a></li><li><a href="global.html#seek">seek</a></li><li><a href="global.html#seekByMilliseconds">seekByMilliseconds</a></li><li><a href="global.html#seekByPercent">seekByPercent</a></li><li><a href="global.html#setAutoPlay">setAutoPlay</a></li><li><a href="global.html#shouldComponentUpdate">shouldComponentUpdate</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#startOrResetVideoUpdateLoop">startOrResetVideoUpdateLoop</a></li><li><a href="global.html#togglePlay">togglePlay</a></li><li><a href="global.html#unmute">unmute</a></li><li><a href="global.html#updateVideoState">updateVideoState</a></li><li><a href="global.html#video">video</a></li><li><a href="global.html#VideoEventKeys">VideoEventKeys</a></li><li><a href="global.html#VideoPlayerOptions">VideoPlayerOptions</a></li><li><a href="global.html#VideoPlayerState">VideoPlayerState</a></li><li><a href="global.html#VideoPlayerTimeState">VideoPlayerTimeState</a></li><li><a href="global.html#volume">volume</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/VideoTimeService.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import queryParams from './QueryString';
+
+class VideoTimeService {
+
+  constructor() {
+    // todo: leave frameRate inside CurrentVideoStore and use it by default
+    this.seconds2String = this.seconds2String.bind(this);
+    this.string2Seconds = this.string2Seconds.bind(this);
+  }
+
+  /**
+   * @param float time        float value in seconds (eg: 10.342)
+   * @param float frameRate   optional; will add current frame
+   * @return                 string with format "mm:ss[:ff]"
+   */
+  seconds2String(time, frameRate = 30) { // eslint-disable-line complexity
+    if (isNaN(time)) {
+      return void 0;
+    }
+    // Sometimes time is negative but less than a frame causing
+    // this flag to get triggered but for the zero time stamp to
+    // show. So we're just going to trim off those digits we don't need
+    const negative = time.toFixed(3) &lt; 0;
+    time = Math.abs(time);
+    const totalSeconds = Math.floor(time);
+    const leftOverMillis = time % 1;
+    const hours = Math.floor(totalSeconds / 3600);
+    let minutes = Math.floor(totalSeconds / 60) % 60;
+    let seconds = totalSeconds % 60;
+    let frames = Math.round(frameRate * leftOverMillis);
+    if (frames >= Math.round(frameRate)) {
+      frames = 0;
+      // todo: run an algorithm for this. don't do brute force field checking, that's painful.
+      seconds++;
+      if (seconds >= 60) {
+        minutes ++;
+      }
+    }
+    // Padding
+    frames = frames &lt; 10 ? '0' + frames : frames;
+    minutes = minutes &lt; 10 ? '0' + minutes : minutes;
+    seconds = seconds &lt; 10 ? '0' + seconds : seconds;
+
+    return `${negative ? '(-' : ''}${hours}:${minutes}:${seconds}:${frames}${negative ? ')' : ''}`;
+  }
+
+  /**
+   * Conversion method from string to float
+   * @type {String}  timeString, a string with format "hours:minutes:seconds:frames"
+   * @return {float}  time in seconds
+   */
+  string2Seconds(timeString, frameRate = 30) {
+    let timeBits = timeString.split(':').reverse();
+    let frames = parseInt(timeBits[0], 10) || 0;
+    let seconds = parseInt(timeBits[1], 10) || 0;
+    let minutes = parseInt(timeBits[2], 10) || 0;
+    let hours = parseInt(timeBits[3], 10) || 0;
+    return (hours * 3600) + (minutes * 60) + seconds + (frames / (frameRate));
+  }
+
+  /**
+   * Look for query params that indicate a starting time
+   * @return {int}  milliseconds
+   */
+  getStartTime(params = queryParams, frameRate = 30) {
+    // look for parameters ["t", "cid"]
+    if (params.hasOwnProperty('t')) {
+      // get timestamp from t param
+      let time = this.validateTimeString(params.t);
+      if (time) {
+        return this.string2Seconds(time, frameRate) * 1000;
+      }
+    } else if (params.hasOwnProperty('cid')) {
+      // get timestamp from comment where id = cid
+      let vkey = '';
+      console.error('Not Done');
+      let cid = parseInt(params.cid, 10);
+      if (!vkey || typeof cid !== 'number') {
+        return 0;
+      }
+      // let comment = CommentStore.getComment(vkey,cid);
+      // if (comment &amp;&amp; comment.timestamp) {
+      //   return comment.timestamp;
+      // }
+    }
+    return 0;
+  }
+
+  /*
+    @param time   string "hh:mm:ss:ff"
+   */
+  validateTimeString(time) {
+    if (typeof time !== 'string') {
+      return void 0;
+    }
+
+    // pad or truncate string
+    let chunks = time.split(':');
+    let timeValues = ['00','00','00','00'];
+    if (chunks.length > 0) {
+      for (let i = 1; i &lt;= 4 &amp;&amp; i &lt;= chunks.length; i++) {
+        timeValues[4 - i] = chunks[chunks.length - i];
+      }
+    } else {
+      return void 0;
+    }
+
+    for (let i = 0; i &lt; timeValues.length; i++) {
+      if (!/^[0-9]+$/.test(timeValues[i])) {
+        return void 0;
+      }
+    }
+    return timeValues.join(':');
+  }
+}
+
+/**
+ * return a simplified string representation of `time`
+ * @param  {int} time   millis
+ * @return {string}
+ */
+function basicTime(time) {
+  let totalSeconds = Math.floor(time / 1000);
+  let hours = Math.floor(totalSeconds / (60 * 60));
+  let minutes = Math.floor(totalSeconds / 60) % 60;
+  let seconds = totalSeconds % 60;
+
+  hours = hours > 0 ? hours + ':' : '';
+  if (minutes === 0) {
+    minutes = hours === '' ? '0' : '00';
+  }
+  seconds = seconds &lt; 10 ? '0' + seconds : seconds;
+  return `${hours}${minutes}:${seconds}`;
+}
+
+const instance = new VideoTimeService();
+export default instance;
+export {basicTime};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 09 2018 16:09:32 GMT-0700 (PDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

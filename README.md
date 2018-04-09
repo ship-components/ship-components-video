@@ -12,7 +12,6 @@
 
 * [Usage](#usage)
 * [Development](#development)
-* [Webpack Configuration](#webpack-configuration)
 * [Tests](#tests)
 * [History](#history)
 
@@ -63,166 +62,7 @@ import {
 ```
 
 ## Docs
-### Core Video Components
-#### DashVideo (Required)
-```js
-/**
- * Dash Adaptive Video Player
- * @required
- * @see http://cdn.dashjs.org/latest/jsdoc/module-MediaPlayer.html
- */
-const { DashVideo } = require('ship-components-video');
-Or
-import { DashVideo } from 'ship-components-video';
-```
-
-#### VideoPlayerContainer (Required)
-```js
-/**
- * Video player wrapper / container
- * @required
- */
-import { VideoPlayerContainer } from 'ship-components-video';
-```
-
-### Video Controlls Components
-#### MuteButton
-```js
-/**
- * Mute / Volume button without volume adjusting
- * @optional
- */
-import { MuteButton } from 'ship-components-video';
-```
-#### FullscreenButton
-```js
-/**
- * Fullscreen button
- * @optional
- */
-import { FullscreenButton } from 'ship-components-video';
-```
-#### PlaybackRate
-```js
-/**
- * Playback rate button
- * @optional
- */
-import { PlaybackRate } from 'ship-components-video';
-```
-#### PlayButton
-```js
-/**
- * Play button
- * @optional
- */
-import { PlayButton } from 'ship-components-video';
-```
-#### PreviousButton
-```js
-/**
- * Previous button
- * @optional
- */
-import { PreviousButton } from 'ship-components-video';
-```
-#### NextButton
-```js
-/**
- * Next button
- * @optional
- */
-import { NextButton } from 'ship-components-video';
-```
-#### PlayIcon
-```js
-/**
- * Play icon overlay
- * @optional
- */
-import { PlayIcon } from 'ship-components-video';
-```
-#### LoadingIcon
-```js
-/**
- * LoadingIcon
- * @optional
- */
-import { LoadingIcon } from 'ship-components-video';
-```
-#### ProgressBar
-```js
-/**
- * ProgressBar
- * @optional
- */
-import { ProgressBar } from 'ship-components-video';
-```
-#### VideoPlayerControls
-```js
-/**
- * VideoPlayerControls
- * @required
- */
-import { VideoPlayerControls } from 'ship-components-video';
-```
-#### VolumeButton
-```js
-/**
- * Volume button with ability to volume up and down
- * @optional
- */
-import { VolumeButton } from 'ship-components-video';
-```
-#### CurrentVideoTime
-```js
-/**
- * Shows the video current time
- * @optional
- */
-import { CurrentVideoTime } from 'ship-components-video';
-```
-### Data
-#### VideoPlayerActions (Required)
-```js
-/**
- * Actions
- * @required
- */
-import { VideoPlayerActions } from 'ship-components-video';
-```
-#### VideoPlayerStore (Required)
-```js
-/**
- * player store
- * @required
- */
-import { VideoPlayerStore } from 'ship-components-video';
-```
-#### VideoPlayerTimeStore (Required)
-```js
-/**
- * player time store
- * @required
- */
-import { VideoPlayerTimeStore } from 'ship-components-video';
-```
-#### VideoDispatcher (Required)
-```js
-/**
- * Dispatcher
- * @required
- */
-import { VideoDispatcher } from 'ship-components-video';
-```
-#### VideoPlayerConstants (Required)
-```js
-/**
- * Constants
- * @required
- */
-import { VideoPlayerConstants } from 'ship-components-video';
-```
+Please refer to [Docs]('/docs');
 ## Config
 #### PlaybackRateOptions
 ```js
@@ -241,35 +81,6 @@ More examples can be found in the `examples/` folder. A development server can b
 $ git clone https://github.com/ship-components/ship-components-video.git
 $ npm install
 $ npm start
-```
-
-### Webpack Configuration
-This module is designed to be used with webpack but requires a few loaders if you are pulling the source into another project.
-
-```shell
-$ npm install webpack babel-loader --save-dev
-```
-
-Below are is a sample of how to setup the loaders:
-
-```js
-/**
- * Relevant Webpack Configuration
- */
-{
-  [...]
-  module: {
-    rules: [
-      // Setup support for ES6
-      {
-        test: /\.(js|es6)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      }
-    ]
-  },
-  [...]
-}
 ```
 
 ## Tests

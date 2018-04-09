@@ -10,7 +10,8 @@
     "test:watchAll": "npm run test -- --watchAll --coverage=false",
     "watch:test": "jest --coverage --watch --coverage=false",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v",
-    "build": "npm test && grunt clean && grunt build"
+    "build": "npm test && grunt clean && grunt build",
+    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,8 @@
   "homepage": "git+https://github.com/ship-components/ship-components-video#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "dashjs": "^2.6.7"
+    "dashjs": "^2.6.7",
+    "docdash": "^0.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -72,6 +74,7 @@
     "jest": "^21.2.1",
     "jest-css-modules": "^1.1.0",
     "jest-junit": "^3.1.0",
+    "jsdoc": "^3.5.5",
     "package-banner": "^0.1.1",
     "postcss-calc": "^5.3.1",
     "postcss-color-function": "^4.0.0",

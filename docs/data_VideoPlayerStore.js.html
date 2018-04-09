@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>data/VideoPlayerStore.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="ProgressBar_ProgressBar.html">ProgressBar</a></li><li><a href="VideoPlayerContainer_VideoPlayerContainer.html">VideoPlayerContainer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActionMap">ActionMap</a></li><li><a href="global.html#basicTime">basicTime</a></li><li><a href="global.html#BufferRecord">BufferRecord</a></li><li><a href="global.html#calculateClickPosition">calculateClickPosition</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#componentWillReceiveProps">componentWillReceiveProps</a></li><li><a href="global.html#componentWillUnmount">componentWillUnmount</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#findPos">findPos</a></li><li><a href="global.html#getBufferedSections">getBufferedSections</a></li><li><a href="global.html#getEventPosition">getEventPosition</a></li><li><a href="global.html#getIsPlaying">getIsPlaying</a></li><li><a href="global.html#handleChange">handleChange</a></li><li><a href="global.html#handleClick">handleClick</a></li><li><a href="global.html#handleDragStart">handleDragStart</a></li><li><a href="global.html#handleDragStop">handleDragStop</a></li><li><a href="global.html#handleMouseDown">handleMouseDown</a></li><li><a href="global.html#handleMouseEnter">handleMouseEnter</a></li><li><a href="global.html#handleMouseLeave">handleMouseLeave</a></li><li><a href="global.html#handleMouseMove">handleMouseMove</a></li><li><a href="global.html#handleMouseUp">handleMouseUp</a></li><li><a href="global.html#handleStreamInitialized">handleStreamInitialized</a></li><li><a href="global.html#instance">instance</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#map2QueryString">map2QueryString</a></li><li><a href="global.html#mute">mute</a></li><li><a href="global.html#pause">pause</a></li><li><a href="global.html#play">play</a></li><li><a href="global.html#playbackRate">playbackRate</a></li><li><a href="global.html#queryString2Map">queryString2Map</a></li><li><a href="global.html#removeEventListeners">removeEventListeners</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#retrieveManifest">retrieveManifest</a></li><li><a href="global.html#seek">seek</a></li><li><a href="global.html#seekByMilliseconds">seekByMilliseconds</a></li><li><a href="global.html#seekByPercent">seekByPercent</a></li><li><a href="global.html#setAutoPlay">setAutoPlay</a></li><li><a href="global.html#shouldComponentUpdate">shouldComponentUpdate</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#startOrResetVideoUpdateLoop">startOrResetVideoUpdateLoop</a></li><li><a href="global.html#togglePlay">togglePlay</a></li><li><a href="global.html#unmute">unmute</a></li><li><a href="global.html#updateVideoState">updateVideoState</a></li><li><a href="global.html#video">video</a></li><li><a href="global.html#VideoEventKeys">VideoEventKeys</a></li><li><a href="global.html#VideoPlayerOptions">VideoPlayerOptions</a></li><li><a href="global.html#VideoPlayerState">VideoPlayerState</a></li><li><a href="global.html#VideoPlayerTimeState">VideoPlayerTimeState</a></li><li><a href="global.html#volume">volume</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">data/VideoPlayerStore.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Stores information related to the &lt;video /> element currently playing
+ */
+
+// External
+import {ReduceStore} from 'flux/utils';
+import Immutable, { Record } from 'immutable';
+import invariant from 'invariant';
+import dispatcher from './VideoDispatcher';
+
+// Internal
+import { getIsPlaying } from '../lib/getVideoState';
+import Constants from './VideoPlayerConstants';
+
+function getDashStates(dashPlayer, state) {
+  if (!dashPlayer.isReady()) {
+    return {};
+  }
+
+  // Extract the buffer level and current bitrate
+  const metrics = dashPlayer.getMetricsFor('video');
+  const dashMetrics = dashPlayer.getDashMetrics();
+  let bitrate;
+  if (metrics &amp;&amp; dashMetrics &amp;&amp; state.streamInfo) {
+    const periodIdx = state.streamInfo.index;
+    const repSwitch = dashMetrics.getCurrentRepresentationSwitch(metrics);
+    bitrate = repSwitch ? Math.round(dashMetrics.getBandwidthForRepresentation(repSwitch.to, periodIdx) / 1000) : NaN;
+  }
+
+  return {
+    bitrates: state.streamInitialized ? dashPlayer.getBitrateInfoListFor('video') : null,
+    bitrate,
+    volume: dashPlayer.getVolume()
+  };
+}
+
+/**
+ * Store configuration options for the Video Player
+ */
+export const VideoPlayerOptions = new Record({
+  keyboardShortcuts: false
+}, 'VideoPlayerOptions');
+
+/**
+ * Stores data that doesn't change as frequently as the
+ * timing data stored in VideoPlayerTimeStore. Anything
+ * that updates constantly should be there and not here
+ */
+export const VideoPlayerState = new Record({
+  isPlaying: false,
+  isScrubbing: false,
+  isMuted: false,
+  isAutoPlay: false,
+  isEnded: false,
+  isLooping: false,
+  canPlay: false,
+  currentSrc: undefined,
+  error: null,
+  networkState: 0,
+  readyState: 0,
+  playbackRate: 1,
+  videoWidth: 0,
+  videoHeight: 0,
+  volume: 1,
+  aspectRatio: 16 / 9,
+  frameRate: 30,
+  options: new VideoPlayerOptions(),
+  // DashPlayer States
+  bitrates: null,
+  bitrate: null,
+  streamInitialized: null,
+  periodSwitch: null,
+  qualityIndex: null,
+  streamInfo: null
+}, 'VideoPlayerState');
+
+/**
+ * Handles incoming events
+ */
+export const ActionMap = {
+  /**
+   * Updates the state based on a video element
+   */
+  [Constants.updateState]: function update(state, action) {
+    const {
+      video,
+      dashPlayer
+    } = action;
+
+    let dashState = {};
+    // Video will normally be a &lt;video /> element except during tests
+    invariant(
+      typeof video !== 'undefined',
+      'action.video is not defined'
+    );
+
+    const videoState = {
+      isPlaying: getIsPlaying(video),
+      isMuted: video.muted,
+      isAutoPlay: video.autoplay,
+      isEnded: video.ended,
+      isLooping: video.loop,
+      // Ignore the playback rate when it's zero when it shouldn't be
+      playbackRate: video.playbackRate !== 0 ? video.playbackRate : state.playbackRate,
+      currentSrc: video.currentSrc,
+      error: video.error,
+      networkState: video.networkState,
+      readyState: video.readyState,
+      canPlay: video.readyState >= 3,
+      videoHeight: video.videoHeight,
+      videoWidth: video.videoWidth,
+      volume: video.volume,
+      aspectRatio: video.videoWidth / video.videoHeight
+    };
+
+    if (dashPlayer) {
+      dashState = getDashStates(dashPlayer, state);
+    }
+
+    return state.merge(Object.assign(videoState, dashState));
+  },
+
+  /**
+   * Updates a friend directly on the store.
+   */
+  [Constants.update]: function update(state, action) {
+    const { body } = action;
+    invariant(
+      typeof body === 'object' &amp;&amp; body !== null,
+      'action.body is not an object'
+    );
+    return state.merge(body);
+  },
+
+  /**
+   * Update the options record
+   */
+  [Constants.updateOptions]: function updateOptions(state, action) {
+    const { body } = action;
+    invariant(
+      typeof body === 'object' &amp;&amp; body !== null,
+      'action.body is not an object'
+    );
+    const options = state.options.merge(body);
+    return state.set('options', options);
+  },
+
+  [Constants.streamInitialized]: function streamInitialized(state) {
+    return state.set('streamInitialized', true);
+  },
+
+  [Constants.reset]: function reset() {
+    return new VideoPlayerState({
+      // Don't reset options. Just the video state
+      options: this.options
+    });
+  },
+
+  [Constants.periodSwitch]: function periodSwitch(state, action) {
+    return state.set('streamInfo', action.streamInfo);
+  },
+
+  [Constants.updateQualityIndex]: function updateQualityIndex(state, action) {
+    // This is the current bitrate
+    const { bitrate } = action;
+    const qualityIndex = bitrate ? bitrate.qualityIndex : null;
+    return state.set('qualityIndex', qualityIndex);
+  }
+};
+
+export class VideoPlayerStore extends ReduceStore {
+  /**
+   * Initial
+   */
+  getInitialState() {
+    return new VideoPlayerState({});
+  }
+
+  /**
+   * Get a value from the record
+   * @param {String} key
+   */
+  get(key) {
+    return this._state[key];
+  }
+
+  /**
+   * Get a deeply nested value
+   * @param {Array&lt;String>} path
+   */
+  getIn(path) {
+    return this._state.getIn(path);
+  }
+
+  /**
+   * Alias to get('isPlaying')
+   */
+  get isPlaying() {
+    return this._state.isPlaying;
+  }
+
+  /**
+   * Alias to get('isMuted')
+   */
+  get isMuted() {
+    return this._state.isMuted;
+  }
+
+  /**
+   * Alias to get('playbackRate')
+   */
+  get playbackRate() {
+    return this._state.playbackRate;
+  }
+
+  /**
+   * Alias to get('frameRate')
+   */
+  get frameRate() {
+    return this._state.frameRate;
+  }
+
+  /**
+   * Alias to get('options')
+   */
+  get options() {
+    return this._state.options;
+  }
+
+  /**
+   * Calculate how long each frame is in milliseconds
+   */
+  getFrameRateMilliseconds() {
+    return (1 / this._state.frameRate) * 1000;
+  }
+
+  /**
+   * Event Handler
+   * @param {Record} state
+   * @param {Object} action
+   */
+  reduce(state, action) {
+    invariant(
+      typeof action.type === 'string',
+      'action.type is not a string'
+    );
+    const handler = ActionMap[action.type];
+    if (typeof handler === 'function' &amp;&amp; typeof action.type === 'string') {
+      const updatedState = handler.call(this, state, action);
+      // Verify the state changed otherwise return the original state. This should
+      // hopefully reduce some of the updates
+      return Immutable.is(updatedState, state) ? state : updatedState;
+    }
+
+    return state;
+  }
+}
+
+/**
+ * Create a singleton
+ */
+const instance = new VideoPlayerStore(dispatcher);
+export default instance;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 09 2018 16:09:32 GMT-0700 (PDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
