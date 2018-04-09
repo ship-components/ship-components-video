@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import invariant from 'invariant';
 
 import VideoControlsButton from '../controls/VideoControlsButton';
 
@@ -11,9 +12,10 @@ export default function NextButton(props) {
     onClick
   } = props;
 
-  if (typeof onClick !== 'function') {
-    return null;
-  }
+  invariant(
+    typeof onClick === 'function',
+    'NextButton onClick cb must be a function'
+  );
 
   return (
     <VideoControlsButton
