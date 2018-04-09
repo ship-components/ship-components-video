@@ -6,9 +6,8 @@ import {Record} from 'immutable';
 
 import VideoPlayerActions from '../../data/VideoPlayerActions';
 import VideoControlSlider from '../controls/VideoControlSlider';
-
-import Slider from './Slider';
 import PlaybackRateOptions from '../../config/PlaybackRateOptions';
+import Slider from './Slider';
 
 import css from './PlaybackRate.css';
 
@@ -20,6 +19,7 @@ export default function PlaybackRate(props) {
   const {
     className,
     visible,
+    PlaybackRateOptionsProp,
     videoState: {
       playbackRate
     }
@@ -31,7 +31,7 @@ export default function PlaybackRate(props) {
 
   // Look up the rate in the options so we can get
   // the friendly label
-  const currentRate = PlaybackRateOptions
+  const currentRate = PlaybackRateOptionsProp
     .find(option =>
       option.value === playbackRate
     );
@@ -63,7 +63,8 @@ export default function PlaybackRate(props) {
 PlaybackRate.defaultProps = {
   className: undefined,
   visible: false,
-  videoState: undefined
+  videoState: undefined,
+  PlaybackRateOptionsProp: PlaybackRateOptions
 };
 
 /**
@@ -72,5 +73,6 @@ PlaybackRate.defaultProps = {
 PlaybackRate.propTypes = {
   className: PropTypes.string,
   videoState: PropTypes.instanceOf(Record),
-  visible: PropTypes.bool
+  visible: PropTypes.bool,
+  PlaybackRateOptionsProp: PropTypes.array.isRequired
 };
