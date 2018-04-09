@@ -1,4 +1,5 @@
 import invariant from 'invariant';
+import PropTypes from 'prop-types';
 import { MediaPlayer } from 'dashjs';
 import VideoPlayerActions from '../../data/VideoPlayerActions';
 
@@ -45,9 +46,9 @@ export default class DashVideo extends Video {
     this.setAutoPlay(props.autoPlay);
     this.dashPlayer.setInitialBitrateFor('video', props.initialBitrate);
     this.dashPlayer.setFastSwitchEnabled(true);
-    this.dashPlayer.getDebug().setLogToBrowserConsole(false);
+    this.dashPlayer.getDebug().setLogToBrowserConsole(props.setLogToBrowserConsole);
     this.dashPlayer.clearDefaultUTCTimingSources();
-    this.dashPlayer.addUTCTimingSource('urn:mpeg:dash:utc:http-iso:2014', window.location.origin + '/api/1/live/time');
+    this.dashPlayer.addUTCTimingSource('urn:mpeg:dash:utc:http-iso:2014', props.liveStreamingTimeURL);
     this.dashPlayerCreatedAt = new Date();
   }
 
@@ -178,3 +179,13 @@ export default class DashVideo extends Video {
     }
   }
 }
+
+DashVideo.defaultProps = {
+  setLogToBrowserConsole: false,
+  liveStreamingTimeURL: undefined
+};
+
+DashVideo.propTypes = {
+  setLogToBrowserConsole: PropTypes.bool,
+  liveStreamingTimeURL: PropTypes.string
+};
