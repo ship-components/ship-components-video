@@ -1,0 +1,69 @@
+.container {
+  z-index: 10;
+  position: absolute;
+  color: #fff;
+  pointer-events: none;
+  font-size: 10vw;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: calc(187 / 4);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
+}
+
+.loader {
+  display: block;
+  height: 66px;
+  width: 66px;
+  margin: 0 auto;
+  animation: rotator 2s linear infinite;
+}
+
+.path {
+  stroke: rgba(255, 255, 255, 0.56);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 2s ease-in-out infinite;
+}
+
+.enter {
+  opacity: 0.01;
+}
+
+.enter.enterActive {
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+.leave {
+  opacity: 1;
+}
+
+.leave.leaveActive {
+  opacity: 0.01;
+  transition: opacity 500ms ease;
+}

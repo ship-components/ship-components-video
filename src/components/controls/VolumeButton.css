@@ -1,0 +1,39 @@
+.hover {
+
+}
+
+.container {
+  justify-content: flex-start;
+  overflow: hidden;
+
+  &.hover {
+    width: 150px;
+  }
+}
+
+.control {
+  /* Must hardcode to fix an issue in FF */
+  height: 48px;
+}
+
+.enter {
+  opacity: 0.01;
+  transform: translateX(100%);
+}
+
+.enter.enterActive {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+
+.leave {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.leave.leaveActive {
+  opacity: 0.01;
+  transform: translateX(100%);
+  transition: all 500ms ease;
+}

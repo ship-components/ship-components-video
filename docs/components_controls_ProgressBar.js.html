@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>components/controls/ProgressBar.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="ProgressBar_ProgressBar.html">ProgressBar</a></li><li><a href="VideoPlayerContainer_VideoPlayerContainer.html">VideoPlayerContainer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActionMap">ActionMap</a></li><li><a href="global.html#basicTime">basicTime</a></li><li><a href="global.html#BufferRecord">BufferRecord</a></li><li><a href="global.html#calculateClickPosition">calculateClickPosition</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#componentWillReceiveProps">componentWillReceiveProps</a></li><li><a href="global.html#componentWillUnmount">componentWillUnmount</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#findPos">findPos</a></li><li><a href="global.html#getBufferedSections">getBufferedSections</a></li><li><a href="global.html#getEventPosition">getEventPosition</a></li><li><a href="global.html#getIsPlaying">getIsPlaying</a></li><li><a href="global.html#handleChange">handleChange</a></li><li><a href="global.html#handleClick">handleClick</a></li><li><a href="global.html#handleDragStart">handleDragStart</a></li><li><a href="global.html#handleDragStop">handleDragStop</a></li><li><a href="global.html#handleMouseDown">handleMouseDown</a></li><li><a href="global.html#handleMouseEnter">handleMouseEnter</a></li><li><a href="global.html#handleMouseLeave">handleMouseLeave</a></li><li><a href="global.html#handleMouseMove">handleMouseMove</a></li><li><a href="global.html#handleMouseUp">handleMouseUp</a></li><li><a href="global.html#handleStreamInitialized">handleStreamInitialized</a></li><li><a href="global.html#instance">instance</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#map2QueryString">map2QueryString</a></li><li><a href="global.html#mute">mute</a></li><li><a href="global.html#pause">pause</a></li><li><a href="global.html#play">play</a></li><li><a href="global.html#playbackRate">playbackRate</a></li><li><a href="global.html#queryString2Map">queryString2Map</a></li><li><a href="global.html#removeEventListeners">removeEventListeners</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#retrieveManifest">retrieveManifest</a></li><li><a href="global.html#seek">seek</a></li><li><a href="global.html#seekByMilliseconds">seekByMilliseconds</a></li><li><a href="global.html#seekByPercent">seekByPercent</a></li><li><a href="global.html#setAutoPlay">setAutoPlay</a></li><li><a href="global.html#shouldComponentUpdate">shouldComponentUpdate</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#startOrResetVideoUpdateLoop">startOrResetVideoUpdateLoop</a></li><li><a href="global.html#togglePlay">togglePlay</a></li><li><a href="global.html#unmute">unmute</a></li><li><a href="global.html#updateVideoState">updateVideoState</a></li><li><a href="global.html#video">video</a></li><li><a href="global.html#VideoEventKeys">VideoEventKeys</a></li><li><a href="global.html#VideoPlayerOptions">VideoPlayerOptions</a></li><li><a href="global.html#VideoPlayerState">VideoPlayerState</a></li><li><a href="global.html#VideoPlayerTimeState">VideoPlayerTimeState</a></li><li><a href="global.html#volume">volume</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/controls/ProgressBar.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import {Record} from 'immutable';
+import subscribe from 'ship-components-subscribe';
+
+import VideoPlayerActions from '../../data/VideoPlayerActions';
+import VideoPlayerTimeStore from '../../data/VideoPlayerTimeStore';
+
+import css from './ProgressBar.css';
+
+export class ProgressBar extends Component {
+
+  /**
+   * Setup
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      containerWidth: -1,
+      containerHeight: -1,
+      mouseDown: false,
+      wasPlaying: false
+    };
+
+    this.scrubToPercent = this.scrubToPercent.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMoveScrub = this.handleMoveScrub.bind(this);
+    this.getEventPosition = this.getEventPosition.bind(this);
+    this.updateDimensions = this.updateDimensions.bind(this);
+  }
+
+  /**
+   * Listen
+   */
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  /**
+ * Update
+ */
+  componentDidUpdate() {
+    this.updateDimensions();
+  }
+
+  /**
+   * Cleanup
+   */
+  componentWillUnmount() {
+    VideoPlayerActions.update({
+      isScrubbing: false
+    });
+    document.removeEventListener('mouseup', this.handleMouseUp);
+    document.removeEventListener('mousemove', this.handleMoveScrub);
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  /**
+   * Calculate where the click was relative to the progress bar and return
+   * a percent we can pass to our parent
+   * @param  {MouseEvent} event
+   * @return {Number}
+   */
+  getEventPosition(event) {
+    const {container} = this.refs;
+    let el = container;
+    const { offsetWidth } = el;
+    let source = el;
+    let offsetLeft = 0;
+    while (source) {
+      offsetLeft += source.offsetLeft;
+      source = source.offsetParent;
+    }
+
+    return Math.max(0, Math.min(1, (event.pageX - offsetLeft) / offsetWidth));
+  }
+
+  /**
+   * Update the container heights and widths
+   */
+  updateDimensions() {
+    let { containerWidth, containerHeight } = this.getContainerSize();
+    if ((!isNaN(containerWidth) &amp;&amp; this.state.containerWidth !== containerWidth) || (!isNaN(containerHeight) &amp;&amp; this.state.containerHeight !== containerHeight)) {
+      this.setState({
+        containerWidth,
+        containerHeight
+      });
+    }
+  }
+
+  /**
+   * Look up the props
+   */
+  getContainerSize() {
+    const {
+      refs: {
+        container
+      }
+    } = this;
+
+    if (!container) {
+      return {
+        containerWidth: -1,
+        containerHeight: -1
+      };
+    }
+
+    return {
+      containerWidth: parseInt(container.clientWidth, 10),
+      containerHeight: parseInt(container.clientHeight, 10)
+    };
+  }
+
+  /**
+   * Start the scrub and add some handlers so we can track the mouse outside
+   * of the progress bar
+   * @param  {MouseEvent} event
+   */
+  handleMouseDown(event) {
+    let percent = this.getEventPosition(event);
+
+    if (percent) {
+      this.scrubToPercent(percent, event);
+    }
+
+    this.setState({
+      mouseDown: true,
+      wasPlaying: this.props.videoState.isPlaying
+    });
+
+    VideoPlayerActions.scrubStart();
+
+    document.addEventListener('mouseup', this.handleMouseUp);
+    document.addEventListener('mousemove', this.handleMoveScrub);
+    if (typeof this.props.onMouseDown === 'function') {
+      this.props.onMouseDown(event);
+    }
+  }
+
+  /**
+   * End the scrub
+   */
+  handleMouseUp() {
+    VideoPlayerActions.scrubStop({
+      play: this.state.wasPlaying
+    });
+
+    this.setState({
+      wasPlaying: false,
+      mouseDown: false
+    });
+
+    document.removeEventListener('mouseup', this.handleMouseUp);
+    document.removeEventListener('mousemove', this.handleMoveScrub);
+    if (this.props.onScrubEnd) {
+      this.props.onScrubEnd();
+    }
+  }
+
+  /**
+   * Trigger the action to seek to someplace new by percent 0..1
+   * @param {Number} percent
+   */
+  scrubToPercent(percent, event) {
+    VideoPlayerActions.seekByPercent(percent);
+    if (typeof this.props.onScrub === 'function') {
+      this.props.onScrub(percent, event);
+    }
+  }
+
+  /**
+   * Update the scrub when we move the mouse regardless if its over then
+   * progress containerWidth
+   * @param  {MouseEvent} event
+   */
+  handleMoveScrub(event) {
+    // Check to see if we're actually scrubbing or not
+    if (!this.state.mouseDown) {
+      return;
+    }
+
+    let percent = this.getEventPosition(event);
+    if (percent) {
+      this.scrubToPercent(percent, event);
+    }
+  }
+
+  render() {
+    const {
+      props: {
+        children,
+        className,
+        videoState,
+        timeState,
+        timeState: {
+          progress,
+          bufferedSections
+        }
+      },
+      state: {
+        mouseDown,
+        containerHeight,
+        containerWidth
+      }
+    } = this;
+
+    return (
+      &lt;div
+        ref='container'
+        className={classNames(css.container, className, {
+          [css.mouseDown] : mouseDown
+        })}
+        onMouseDown={this.handleMouseDown}
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseOver={this.props.onMouseOver}
+        onMouseLeave={this.props.onMouseLeave}
+      >
+        {React.Children.map(children, (child) => {
+          if (!child || typeof child.type !== 'function') {
+            return child;
+          }
+          return React.cloneElement(child, {
+            videoState,
+            timeState,
+            containerHeight,
+            containerWidth
+          });
+        })}
+        &lt;div className={classNames(css.wrapper, css.buffered)}>
+          {bufferedSections &amp;&amp; bufferedSections.map(buff => (
+            &lt;div
+              key={buff.key}
+              className={css.bar}
+              style={{
+                left: `${buff.start}%`,
+                width: `${buff.end - buff.start}%`
+              }}
+            />
+          ))}
+        &lt;/div>
+        &lt;div className={classNames(css.wrapper, css.progress)}>
+          &lt;div
+            className={css.bar}
+            style={{
+              width: `${progress}%`
+            }}
+          />
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+/**
+ * Defaults
+ */
+ProgressBar.defaultProps = {
+  className: undefined,
+  onScrub: undefined,
+  onScrubEnd: undefined,
+  onMouseDown: undefined,
+  onMouseEnter: undefined,
+  onMouseOver: undefined,
+  onMouseLeave: undefined,
+  children: null
+};
+
+/**
+ * Types
+ */
+ProgressBar.propTypes = {
+  onScrub: PropTypes.func,
+  onScrubEnd: PropTypes.func,
+  onMouseDown: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseOver: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  className: PropTypes.string,
+  videoState: PropTypes.instanceOf(Record).isRequired,
+  timeState: PropTypes.instanceOf(Record).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+    PropTypes.string
+  ])
+};
+
+/**
+ * Returns a Component that listens to a store and auto updates itself
+ * @return    {React.Component}
+ */
+export default subscribe({
+  WrappedComponent: ProgressBar,
+  Store: VideoPlayerTimeStore,
+  selectData: store => store.getState(),
+  dataKey: 'timeState'
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 09 2018 17:08:24 GMT-0700 (PDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

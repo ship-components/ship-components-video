@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>components/controls/Slider.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="ProgressBar_ProgressBar.html">ProgressBar</a></li><li><a href="VideoPlayerContainer_VideoPlayerContainer.html">VideoPlayerContainer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActionMap">ActionMap</a></li><li><a href="global.html#basicTime">basicTime</a></li><li><a href="global.html#BufferRecord">BufferRecord</a></li><li><a href="global.html#calculateClickPosition">calculateClickPosition</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#componentWillReceiveProps">componentWillReceiveProps</a></li><li><a href="global.html#componentWillUnmount">componentWillUnmount</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#findPos">findPos</a></li><li><a href="global.html#getBufferedSections">getBufferedSections</a></li><li><a href="global.html#getEventPosition">getEventPosition</a></li><li><a href="global.html#getIsPlaying">getIsPlaying</a></li><li><a href="global.html#handleChange">handleChange</a></li><li><a href="global.html#handleClick">handleClick</a></li><li><a href="global.html#handleDragStart">handleDragStart</a></li><li><a href="global.html#handleDragStop">handleDragStop</a></li><li><a href="global.html#handleMouseDown">handleMouseDown</a></li><li><a href="global.html#handleMouseEnter">handleMouseEnter</a></li><li><a href="global.html#handleMouseLeave">handleMouseLeave</a></li><li><a href="global.html#handleMouseMove">handleMouseMove</a></li><li><a href="global.html#handleMouseUp">handleMouseUp</a></li><li><a href="global.html#handleStreamInitialized">handleStreamInitialized</a></li><li><a href="global.html#instance">instance</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#map2QueryString">map2QueryString</a></li><li><a href="global.html#mute">mute</a></li><li><a href="global.html#pause">pause</a></li><li><a href="global.html#play">play</a></li><li><a href="global.html#playbackRate">playbackRate</a></li><li><a href="global.html#queryString2Map">queryString2Map</a></li><li><a href="global.html#removeEventListeners">removeEventListeners</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#retrieveManifest">retrieveManifest</a></li><li><a href="global.html#seek">seek</a></li><li><a href="global.html#seekByMilliseconds">seekByMilliseconds</a></li><li><a href="global.html#seekByPercent">seekByPercent</a></li><li><a href="global.html#setAutoPlay">setAutoPlay</a></li><li><a href="global.html#shouldComponentUpdate">shouldComponentUpdate</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#startOrResetVideoUpdateLoop">startOrResetVideoUpdateLoop</a></li><li><a href="global.html#togglePlay">togglePlay</a></li><li><a href="global.html#unmute">unmute</a></li><li><a href="global.html#updateVideoState">updateVideoState</a></li><li><a href="global.html#video">video</a></li><li><a href="global.html#VideoEventKeys">VideoEventKeys</a></li><li><a href="global.html#VideoPlayerOptions">VideoPlayerOptions</a></li><li><a href="global.html#VideoPlayerState">VideoPlayerState</a></li><li><a href="global.html#VideoPlayerTimeState">VideoPlayerTimeState</a></li><li><a href="global.html#volume">volume</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/controls/Slider.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
+import css from './Slider.css';
+
+export default class Slider extends Component {
+  /**
+   * Setup
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+
+    // Keep track of the last value so we can detect changes
+    this.lastValue = props.value;
+
+    this.state = {
+      dragging: false
+    };
+
+    // Bindings
+    this.handleClick = this.handleClick.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.removeEventListeners = this.removeEventListeners.bind(this);
+  }
+
+  /**
+   * Performance check
+   * @param {Object} nextProps
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return [
+      'value',
+      'className'
+    ].some(key => this.props[key] !== nextProps[key]) ||
+      [
+        'dragging'
+      ].some(key => this.state[key] !== nextState[key]);
+  }
+
+  /**
+   * Cleanup
+   */
+  componentWillUnmount() {
+    this.removeEventListeners();
+  }
+
+  /**
+   * Clean up any global event listeners from the drag
+   */
+  removeEventListeners() {
+    document.removeEventListener('mouseup', this.handleMouseUp);
+    document.removeEventListener('mousemove', this.handleMouseMove);
+  }
+
+  /**
+   * Start the dragging
+   */
+  handleMouseDown() {
+    document.addEventListener('mouseup', this.handleMouseUp);
+    document.addEventListener('mousemove', this.handleMouseMove);
+  }
+
+  /**
+   * End the dragging
+   */
+  handleMouseUp() {
+    this.removeEventListeners();
+    if (this.state.dragging &amp;&amp; typeof this.props.onDragStop === 'function') {
+      this.props.onDragStop();
+    }
+    this.setState({
+      dragging: false
+    });
+  }
+
+  /**
+   * Drag is active
+   * @param {Event} event
+   */
+  handleMouseMove(event) {
+    this.handleChange(event);
+    if (!this.state.dragging &amp;&amp; typeof this.props.onDragStart === 'function') {
+      this.props.onDragStart();
+    }
+
+    if (!this.state.dragging) {
+      this.setState({
+        dragging: true
+      });
+    }
+  }
+
+  /**
+   * Click a specific point on the slider
+   * @param {Event} event
+   */
+  handleClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.handleChange(event);
+  }
+
+  getValue() {
+    const {
+      options,
+      value
+    } = this.props;
+    if (!Array.isArray(options)) {
+      return value;
+    }
+    return options.reduce((previous, current) =>
+      (Math.abs(current - value) &lt; Math.abs(previous - value) ? current : previous)
+    );
+  }
+
+  /**
+   * Called for every change either from a click or a drag
+   * @param {Event} event
+   */
+  handleChange(event) {
+    const {
+      range,
+      options,
+      onChange
+    } = this.props;
+    const percent = this.getEventPosition(event);
+
+    let value;
+    if (Array.isArray(options)) {
+      value = options[Math.round((options.length - 1) * percent)];
+    } else {
+      value = (range[1] - range[0]) * percent + range[0];
+    }
+
+    // Only emit the change event when the value actually changes
+    if (this.lastValue !== value) {
+      onChange({
+        target: {
+          value
+        }
+      });
+    }
+
+    this.lastValue = value;
+  }
+
+  /**
+   * Calculate where the click was relative to the progress bar and return
+   * a percent we can pass to our parent
+   * @param  {MouseEvent} event
+   * @return {Number}
+   */
+  getEventPosition(event) {
+    const { container } = this.refs;
+    let el = container;
+    const { offsetWidth } = el;
+    let source = el;
+    let offsetLeft = 0;
+
+    while (source) {
+      offsetLeft += source.offsetLeft;
+      source = source.offsetParent;
+    }
+
+    return Math.max(0, Math.min(1, (event.pageX - offsetLeft) / offsetWidth));
+  }
+
+  /**
+   * Render
+   */
+  render() { // eslint-disable-line complexity
+    const {
+      props: {
+        className,
+        value,
+        range,
+        options,
+        showTicks,
+        hideBackground,
+        hideBar,
+        hideHandle
+      },
+      state: {
+        dragging
+      }
+    } = this;
+
+    let adjustedValue;
+    if (Array.isArray(options)) {
+      const index = options.indexOf(value);
+      adjustedValue = index / (options.length - 1);
+    } else {
+      adjustedValue = (value - range[0]) / (range[1] - range[0]);
+    }
+
+    const percent = (adjustedValue * 100) + '%';
+
+    return (
+      &lt;div
+        className={classNames(css.container, className, {
+          [css.dragging]: dragging
+        })}
+        ref='container'
+        onClick={this.handleClick}
+        onMouseDown={this.handleMouseDown}
+      >
+        {!hideBar ?
+          &lt;div
+            className={css.bar}
+            style={{
+              width: percent
+            }}
+          />
+          : null}
+        {!hideHandle ?
+          &lt;div
+            className={css.handle}
+            style={{
+              left: percent
+            }}
+          />
+          : null}
+        {!hideBackground ?
+          &lt;div className={css.background} />
+          : null}
+        {showTicks &amp;&amp; Array.isArray(options) &amp;&amp; options.length > 1 ?
+          options.map((option, index) => (
+            &lt;div
+              key={option}
+              className={css.tick}
+              style={{
+                left: `${(index / (options.length - 1)) * 100}%`
+              }}
+            />
+          ))
+          : null}
+      &lt;/div>
+    );
+  }
+}
+
+/**
+ * Defaults
+ */
+Slider.defaultProps = {
+  className: undefined,
+  options: undefined,
+  onDragStart: undefined,
+  onDragStop: undefined,
+  range: [0, 1],
+  showTicks: false,
+  hideBackground: false,
+  hideBar: false,
+  hideHandle: false
+};
+
+/**
+ * Types
+ */
+Slider.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.number.isRequired,
+  range: PropTypes.arrayOf(PropTypes.number),
+  options: PropTypes.arrayOf(PropTypes.number),
+  onChange: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func,
+  onDragStop: PropTypes.func,
+  showTicks: PropTypes.bool,
+  hideBackground: PropTypes.bool,
+  hideBar: PropTypes.bool,
+  hideHandle: PropTypes.bool
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 09 2018 17:08:24 GMT-0700 (PDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

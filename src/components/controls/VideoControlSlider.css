@@ -1,0 +1,13 @@
+.container {
+  overflow: hidden;
+  width: 48px;
+  justify-content: flex-start;
+  padding: 0;
+
+  &.hover {
+    width: 150px;
+    .control {
+      opacity: 1;
+    }
+  }
+}

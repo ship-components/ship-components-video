@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>data/VideoPlayerActions.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="ProgressBar_ProgressBar.html">ProgressBar</a></li><li><a href="VideoPlayerContainer_VideoPlayerContainer.html">VideoPlayerContainer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActionMap">ActionMap</a></li><li><a href="global.html#basicTime">basicTime</a></li><li><a href="global.html#BufferRecord">BufferRecord</a></li><li><a href="global.html#calculateClickPosition">calculateClickPosition</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#componentWillReceiveProps">componentWillReceiveProps</a></li><li><a href="global.html#componentWillUnmount">componentWillUnmount</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#findPos">findPos</a></li><li><a href="global.html#getBufferedSections">getBufferedSections</a></li><li><a href="global.html#getEventPosition">getEventPosition</a></li><li><a href="global.html#getIsPlaying">getIsPlaying</a></li><li><a href="global.html#handleChange">handleChange</a></li><li><a href="global.html#handleClick">handleClick</a></li><li><a href="global.html#handleDragStart">handleDragStart</a></li><li><a href="global.html#handleDragStop">handleDragStop</a></li><li><a href="global.html#handleMouseDown">handleMouseDown</a></li><li><a href="global.html#handleMouseEnter">handleMouseEnter</a></li><li><a href="global.html#handleMouseLeave">handleMouseLeave</a></li><li><a href="global.html#handleMouseMove">handleMouseMove</a></li><li><a href="global.html#handleMouseUp">handleMouseUp</a></li><li><a href="global.html#handleStreamInitialized">handleStreamInitialized</a></li><li><a href="global.html#instance">instance</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#map2QueryString">map2QueryString</a></li><li><a href="global.html#mute">mute</a></li><li><a href="global.html#pause">pause</a></li><li><a href="global.html#play">play</a></li><li><a href="global.html#playbackRate">playbackRate</a></li><li><a href="global.html#queryString2Map">queryString2Map</a></li><li><a href="global.html#removeEventListeners">removeEventListeners</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#retrieveManifest">retrieveManifest</a></li><li><a href="global.html#seek">seek</a></li><li><a href="global.html#seekByMilliseconds">seekByMilliseconds</a></li><li><a href="global.html#seekByPercent">seekByPercent</a></li><li><a href="global.html#setAutoPlay">setAutoPlay</a></li><li><a href="global.html#shouldComponentUpdate">shouldComponentUpdate</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#startOrResetVideoUpdateLoop">startOrResetVideoUpdateLoop</a></li><li><a href="global.html#togglePlay">togglePlay</a></li><li><a href="global.html#unmute">unmute</a></li><li><a href="global.html#updateVideoState">updateVideoState</a></li><li><a href="global.html#video">video</a></li><li><a href="global.html#VideoEventKeys">VideoEventKeys</a></li><li><a href="global.html#VideoPlayerOptions">VideoPlayerOptions</a></li><li><a href="global.html#VideoPlayerState">VideoPlayerState</a></li><li><a href="global.html#VideoPlayerTimeState">VideoPlayerTimeState</a></li><li><a href="global.html#volume">volume</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">data/VideoPlayerActions.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * These actions can be called from anywhere in the app
+ * and control the video currently playing.
+ */
+
+// External
+import Events from 'events';
+import invariant from 'invariant';
+
+// Internal
+import VideoDispatcher from './VideoDispatcher';
+import Constants from './VideoPlayerConstants';
+import VideoPlayerStore from './VideoPlayerStore';
+import VideoPlayerTimeStore from './VideoPlayerTimeStore';
+import PlaybackRateOptions from '../config/PlaybackRateOptions';
+
+export class VideoPlayerActions extends Events {
+  constructor() {
+    super();
+    const self = this;
+
+    // Re-emit the following events
+    [
+      'play',
+      'pause',
+      'mute',
+      'unmute',
+      'playbackRate',
+      'volume',
+      'seek',
+      'seekByPercent',
+      'seekByMilliseconds',
+      'toggleFullscreen',
+      'retrieveManifest'
+    ]
+      .forEach((key) => {
+        this[key] = function emit() {
+          const args = Array.prototype.slice.call(arguments);
+          this.emit.apply(self, [key].concat(args));
+        }.bind(this);
+      });
+
+    // Bindings
+    [
+      'togglePlay',
+      'toggleMute',
+      'step',
+      'stepBack',
+      'stepForward',
+      'increasePlaybackRate',
+      'decreasePlaybackRate',
+      'resetPlaybackRate'
+    ].forEach((key) => {
+      this[key] = this[key].bind(this);
+    });
+
+    // Define keyboard shortcuts
+    this.keyboardShortcuts = {
+      // space
+      32: this.togglePlay,
+      // m
+      77: this.toggleMute,
+      //  left
+      37: this.stepBack,
+      // right
+      39: this.stepForward,
+      // >
+      190: this.increasePlaybackRate,
+      // &lt;
+      188: this.decreasePlaybackRate,
+      // /
+      191: this.resetPlaybackRate
+    };
+
+    // Listen to all keys down, use capture so we can avoid other event handlers
+    // stopping this
+    document.addEventListener('keydown', this.handleKeyDown.bind(this), true);
+  }
+
+  /**
+   * Keyboard shortcuts for the Video Player
+   * @param {Event} event
+   */
+  handleKeyDown(event) {
+    // we don't support any modifiers at the moment
+    if (!VideoPlayerStore.options.keyboardShortcuts || event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) {
+      return;
+    }
+
+    const {
+      keyCode
+    } = event;
+
+    if (typeof this.keyboardShortcuts[keyCode] === 'function') {
+      event.preventDefault();
+      this.keyboardShortcuts[keyCode](event);
+    }
+  }
+
+  /**
+   * Listen to an event and return an object
+   * we can use to unmount it when we're done.
+   * @param {String} type
+   * @param {Function} fn
+   */
+  addChangeListener(type, fn) {
+    this.addListener(type, fn);
+    return {
+      remove: () => {
+        this.removeListener(type, fn);
+      }
+    };
+  }
+
+  /**
+   * Set volume of the video player
+   * @param {Number} volume
+   */
+  setVolume(volume) {
+    invariant(
+      !isNaN(volume) &amp;&amp; volume >= 0 &amp;&amp; volume &lt;= 1,
+      'volume is not number between 0 and 1'
+    );
+    if (VideoPlayerStore.isMuted &amp;&amp; volume > 0) {
+      this.unmute();
+    }
+    this.emit('volume', volume);
+  }
+
+  /**
+   * Double current playback rate
+   */
+  increasePlaybackRate() {
+    const playbackRate = Math.min(PlaybackRateOptions[PlaybackRateOptions.length - 1].value, VideoPlayerStore.playbackRate * 2);
+    this.playbackRate(playbackRate);
+  }
+
+  /**
+   * Decrease playback rate by half
+   */
+  decreasePlaybackRate() {
+    const playbackRate = Math.max(PlaybackRateOptions[0].value, VideoPlayerStore.playbackRate / 2);
+    this.playbackRate(playbackRate);
+  }
+
+  /**
+   * Reset playback rate to normal
+   */
+  resetPlaybackRate() {
+    this.playbackRate(1);
+  }
+
+  /**
+   * Jump forward or backward a set number of ms
+   * @param {Number} ms
+   */
+  step(ms) {
+    invariant(
+      !isNaN(ms),
+      'ms is not a number'
+    );
+    const { currentTime } = VideoPlayerTimeStore;
+    this.seekByMilliseconds((currentTime * 1000) + ms);
+  }
+
+  /**
+   * Move slightly back
+   */
+  stepBack() {
+    this.step(VideoPlayerStore.getFrameRateMilliseconds() * -1);
+  }
+
+  /**
+   * Move slightly forward
+   */
+  stepForward() {
+    this.step(VideoPlayerStore.getFrameRateMilliseconds());
+  }
+
+  /**
+   * Toggle the play state
+   */
+  togglePlay() {
+    if (VideoPlayerStore.isPlaying) {
+      this.pause();
+    } else {
+      this.play();
+    }
+  }
+
+  /**
+ * Toggle the mute state
+ */
+  toggleMute() {
+    if (VideoPlayerStore.isMuted) {
+      this.unmute();
+    } else {
+      this.mute();
+    }
+  }
+
+  /**
+   * Seek to a part of a video by percent
+   * @param {Number} percent
+   */
+  seekByPercent(percent) {
+    invariant(
+      !isNaN(percent) &amp;&amp; percent >= 0 &amp;&amp; percent &lt;= 1,
+      'percent is not number between 0 and 1'
+    );
+    this.emit('seekByPercent', percent);
+  }
+
+  /**
+   * Update the store based on the raw video element
+   * @param {Node} video
+   */
+  updateState(video) {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.updateState,
+        video
+      });
+    }, 0);
+  }
+
+  /**
+   * Directly update the store
+   * @param {Object} body
+   */
+  update(body) {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.update,
+        body
+      });
+    }, 0);
+  }
+
+  /**
+ * Update the options
+ * @param {Object} body
+ */
+  updateOptions(body) {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.updateOptions,
+        body
+      });
+    }, 0);
+  }
+
+  /**
+   * Update Dash State
+   * @param {Object} body
+   */
+  updateDashState(video, dashPlayer) {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.updateState,
+        video,
+        dashPlayer
+      });
+    }, 0);
+  }
+
+  /**
+   * Initialize dash player stream
+   * @param {Object} body
+   */
+
+  streamInitialized() {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.streamInitialized
+      });
+    }, 0);
+  }
+
+  /**
+   * Reset dash player state
+   * @param {Object} body
+   */
+  reset() {
+    this.emit('reset');
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.reset
+      });
+    }, 0);
+  }
+
+  periodSwitch(event) {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.periodSwitch,
+        streamInfo: event.toStreamInfo
+      });
+    }, 0);
+  }
+
+  updateQualityIndex(bitrate) {
+    setTimeout(() => {
+      VideoDispatcher.dispatch({
+        type: Constants.updateQualityIndex,
+        bitrate
+      });
+    }, 0);
+  }
+
+  /**
+   * Start scrubbing
+   */
+  scrubStart() {
+    // Always pause on scrub start
+    this.pause();
+
+    this.update({
+      isScrubbing: true
+    });
+  }
+
+  /**
+   * Stop scrubbing and optionally play
+   * @param {Object} args
+   */
+  scrubStop({play}) {
+    this.update({
+      isScrubbing: false
+    });
+
+    if (play) {
+      this.play();
+    }
+  }
+}
+
+const instance = new VideoPlayerActions();
+export default instance;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 09 2018 17:08:24 GMT-0700 (PDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

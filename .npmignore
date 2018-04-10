@@ -1,0 +1,9 @@
+examples/
+tasks/
+Gruntfile.js
+.coveralls.yml
+.travis.yml
+setupTests.js
+test-reports
+.eslintrc.json
+package-lock.json

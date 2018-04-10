@@ -1,0 +1,20 @@
+.container {
+  height: 48px;
+  user-select: none;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.11);
+  z-index: 100;
+}
+
+.autoHide {
+  transform: translateY(100%);
+  transition: 0.5s ease all;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &.show {
+    transform: translateY(0%);
+  }
+}
