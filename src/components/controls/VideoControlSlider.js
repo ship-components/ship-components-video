@@ -107,10 +107,10 @@ export default class VideoControlSlider extends Component {
           if (!child || typeof child.type !== 'function') {
             return child;
           }
-          return React.cloneElement(child, Object.assign({
+          return React.cloneElement(child, {
             onDragStart: this.handleDragStart,
             onDragStop: this.handleDragStop
-          }));
+          });
         })}
       </VideoControl>
     );

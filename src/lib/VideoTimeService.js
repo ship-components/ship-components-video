@@ -1,9 +1,9 @@
 import queryParams from './QueryString';
+import ms from 'ms';
 
 class VideoTimeService {
 
   constructor() {
-    // todo: leave frameRate inside CurrentVideoStore and use it by default
     this.seconds2String = this.seconds2String.bind(this);
     this.string2Seconds = this.string2Seconds.bind(this);
   }
@@ -62,57 +62,64 @@ class VideoTimeService {
    * Look for query params that indicate a starting time
    * @return {int}  milliseconds
    */
-  getStartTime(params = queryParams, frameRate = 30) {
+  getStartTime(params = queryParams, frameRate = 30) { // eslint-disable-line complexity
     // look for parameters ["t", "cid"]
-    if (params.hasOwnProperty('t')) {
+    if (params.hasOwnProperty('t') && params.t.toString().length > 0) {
+      // Parse strings like 1.2212s or 1h or 2m
+      const time = this.validateTimeString(params.t);
+      if (!isNaN(time)) {
+        return time;
+      }
+
       // get timestamp from t param
-      let time = this.validateTimeString(params.t);
-      if (time) {
-        return this.string2Seconds(time, frameRate) * 1000;
+      const timeCode = this.validateTimeCode(params.t);
+      if (timeCode) {
+        return this.string2Seconds(timeCode, frameRate) * 1000;
       }
-    } else if (params.hasOwnProperty('cid')) {
-      // get timestamp from comment where id = cid
-      let vkey = '';
-      console.error('Not Done');
-      let cid = parseInt(params.cid, 10);
-      if (!vkey || typeof cid !== 'number') {
-        return 0;
-      }
-      // let comment = CommentStore.getComment(vkey,cid);
-      // if (comment && comment.timestamp) {
-      //   return comment.timestamp;
-      // }
     }
+
     return 0;
   }
 
-  /*
-    @param time   string "hh:mm:ss:ff"
-   */
+  /**
+     * Takes a string like 1s and converts to ms
+     * @param   {String}  time  A string if a format like 1.21s
+     */
   validateTimeString(time) {
+    return Math.floor(ms(time));
+  }
+
+  /**
+   * Checks to see if a string fits a timecode and return it if successful
+   * @param {String} time "hh:mm:ss:ff"
+   */
+  validateTimeCode(time, defaultValue = undefined) {
     if (typeof time !== 'string') {
-      return void 0;
+      return defaultValue;
     }
 
     // pad or truncate string
     let chunks = time.split(':');
-    let timeValues = ['00','00','00','00'];
-    if (chunks.length > 0) {
-      for (let i = 1; i <= 4 && i <= chunks.length; i++) {
-        timeValues[4 - i] = chunks[chunks.length - i];
-      }
-    } else {
-      return void 0;
+    let timeValues = ['00', '00', '00', '00'];
+    if (chunks.length === 0) {
+      return defaultValue;
     }
+
+    for (let i = 1; i <= 4 && i <= chunks.length; i++) {
+      timeValues[4 - i] = chunks[chunks.length - i];
+    }
+
 
     for (let i = 0; i < timeValues.length; i++) {
       if (!/^[0-9]+$/.test(timeValues[i])) {
-        return void 0;
+        return defaultValue;
       }
     }
+
     return timeValues.join(':');
   }
 }
+
 
 /**
  * return a simplified string representation of `time`

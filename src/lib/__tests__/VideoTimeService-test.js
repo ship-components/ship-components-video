@@ -102,9 +102,23 @@ describe('TimeService', () => {
           expected: 60016.6666
         },
         {
-          value: '01',
+          value: '0:01',
           frameRate: 60,
           expected: 16.6666
+        },
+        {
+          value: '1000',
+          expected: 1000
+        },
+        {
+          value: '1.5s',
+          frameRate: 60,
+          expected: 1500
+        },
+        {
+          value: '5m',
+          frameRate: 60,
+          expected: 300000
         }
       ].forEach((test) => { // eslint-disable-line max-nested-callbacks
         expect(TimeService.getStartTime({

@@ -160,9 +160,6 @@ export class VideoPlayerContainer extends Component {
           [css.fullscreen]: isFullscreen
         })}
         ref='container'
-        style={{
-          height: '100%'
-        }}
         onMouseOver={this.handleMouseOver}
         onMouseMove={this.handleMouseOver}
       >
@@ -187,7 +184,8 @@ export class VideoPlayerContainer extends Component {
  * Defaults
  */
 VideoPlayerContainer.defaultProps = {
-  className: undefined
+  className: undefined,
+  frameRate: 30
 };
 
 /**
@@ -200,6 +198,7 @@ VideoPlayerContainer.propTypes = {
     PropTypes.node,
     PropTypes.string
   ]).isRequired,
+  frameRate: PropTypes.number.isRequired,
   videoState: PropTypes.instanceOf(Record).isRequired
 };
 

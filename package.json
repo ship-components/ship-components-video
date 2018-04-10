@@ -7,8 +7,7 @@
     "start": "grunt server",
     "lint": "./node_modules/eslint/bin/eslint.js src/**/*.js",
     "test": "jest",
-    "test:watchAll": "npm run test -- --watchAll --coverage=false",
-    "watch:test": "jest --coverage --watch --coverage=false",
+    "test:watch": "jest --coverage --watch --coverage=false",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v",
     "build": "npm test && grunt clean && grunt build",
     "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
@@ -18,7 +17,7 @@
     "url": "git+https://github.com/ship-components/ship-components-video.git"
   },
   "engines": {
-    "node": ">=4.0 <9.0"
+    "node": ">=4.0"
   },
   "keywords": [
     "react",
@@ -40,7 +39,8 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "dashjs": "^2.6.7",
-    "docdash": "^0.4.0"
+    "docdash": "^0.4.0",
+    "ms": "^2.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -90,7 +90,6 @@
     "react-test-renderer": "^15.6.1",
     "ship-components-checkbox": "^0.2.0",
     "ship-components-icon": "^0.1.2",
-    "ship-components-select": "^1.1.1",
     "ship-components-subscribe": "^0.2.0",
     "ship-components-textinput": "^0.3.9",
     "style-loader": "^0.18.2",
