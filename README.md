@@ -1,6 +1,5 @@
 # ship-components-video
-
-[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) set of utilities. Exports a commonjs module that can be used with [webpack](http://webpack.github.io/). Source is in ES6 and an ES5 version is available using [Babel](https://babeljs.io/).
+A React video component using HTML5 and [DashJS](https://github.com/Dash-Industry-Forum/dash.js/wiki).
 
 [![npm](https://img.shields.io/npm/v/ship-components-video.svg)](https://www.npmjs.com/package/ship-components-video)
 [![Build Status](http://img.shields.io/travis/ship-components/ship-components-video/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-video)
@@ -11,36 +10,10 @@
 ## Docs & Help
 
 * [Usage](#usage)
+* [Docs](docs/index.html)
 * [Development](#development)
 * [Tests](#tests)
 * [History](#history)
-
-Here is the list of components & methods you can use.
-
-* [Core Video Component](#corevideocomponent)
-  * [DashVideo](#dashvideo)
-  * [VideoPlayerContainer](#videoplayercontainer)
-* [Video Controlls Component](#videocontrollscomponent)
-  * [MuteButton](#mutebutton)
-  * [FullscreenButton](#fullscreenbutton)
-  * [PlaybackRate](#playbackrate)
-  * [PlayButton](#playbutton)
-  * [PreviousButton](#previousbutton)
-  * [NextButton](#nextbutton)
-  * [PlayIcon](#playicon)
-  * [LoadingIcon](#loadingicon)
-  * [ProgressBar](#progressbar)
-  * [VideoPlayerControls](#videoplayercontrols)
-  * [VolumeButton](#volumebutton)
-  * [CurrentVideoTime](#currentvideotime)
-* [Data](#data)
-  * [VideoPlayerActions](#videoplayeractions)
-  * [VideoPlayerStore](#videoplayerstore)
-  * [VideoPlayerTimeStore](#videoplayertimeStore)
-  * [VideoDispatcher](#videodispatcher)
-  * [VideoPlayerConstants](#videoplayerconstants)
-* [Config](#cofig)
-  * [PlaybackRateOptions](#playbackrateoptions)
 
 ## Usage
 
@@ -62,17 +35,7 @@ import {
 ```
 
 ## Docs
-Please refer to [Docs]('/docs');
-## Config
-#### PlaybackRateOptions
-```js
-/**
- * playback rate config options
- * @optional
- */
-import { PlaybackRateOptions } from 'ship-components-video';
-```
-
+Please refer to [Docs]('./docs/index.html');
 
 ## Development
 More examples can be found in the `examples/` folder. A development server can be run with:
