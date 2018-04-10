@@ -89,6 +89,7 @@
     "react-dom": "^15.6.2",
     "react-test-renderer": "^15.6.1",
     "ship-components-checkbox": "^0.2.0",
+    "ship-components-highlight-click": "^1.0.0",
     "ship-components-icon": "^0.1.2",
     "ship-components-subscribe": "^0.2.0",
     "ship-components-textinput": "^0.3.9",

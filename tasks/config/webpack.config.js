@@ -18,7 +18,6 @@ module.exports = {
     classnames: true,
     react: 'React',
     'react-dom': true,
-    // 'ship-components-outsideclick': true, // uncomment it if the app is using this module
     'ship-components-icon': true,
     'react-addons-css-transition-group': true
   },
